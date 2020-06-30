@@ -69,7 +69,9 @@ const SiteHeader = styled.header`
   background: transparent;
   display: flex;
   align-content: center;
-  justify-content: flex-end;
+  justify-content: center;
+
+  font-family: "Raleway", cursive;
 `
 
 const Header = ({ siteTitle }) => (

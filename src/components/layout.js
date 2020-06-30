@@ -30,6 +30,11 @@ const GatsbyLink = styled.a`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
+  align-item: center;
+
+  p {
+    margin-bottom: 0;
+  }
 `
 
 const Layout = ({ children }) => (
