@@ -1,7 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
+import Image from "gatsby-image"
 
 const Container = styled.div`
   text-align: center;
@@ -26,29 +27,39 @@ const NameHeader = styled.h2`
   margin-bottom: 0;
 `
 
-const LandingBio = () => (
-  <StaticQuery
-    query={graphql`
-      query LandingSiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            subtitle
+const LandingBio = () => {
+  const data = useStaticQuery(graphql`
+    query LandingBioQuery {
+      profileImg: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
-    `}
-    render={(data) => (
-      <OuterContainer>
-        <Container>
-          <NameHeader>{data.site.siteMetadata.title}</NameHeader>
-          <hr />
-          <Description>{data.site.siteMetadata.subtitle}</Description>
-        </Container>
-      </OuterContainer>
-    )}
-  />
-)
+      site {
+        siteMetadata {
+          title
+          subtitle
+          author
+        }
+      }
+    }
+  `)
+
+  const { title, subtitle, author } = data.site.siteMetadata
+
+  return (
+    <OuterContainer>
+      {console.log(data)}
+      <Container>
+        <NameHeader>{title}</NameHeader>
+        <hr />
+        <Description>{subtitle}</Description>
+      </Container>
+    </OuterContainer>
+  )
+}
 
 NameHeader.propTypes = {
   siteTitle: PropTypes.string,
