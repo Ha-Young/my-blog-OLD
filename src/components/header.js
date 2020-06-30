@@ -69,14 +69,14 @@ const SiteHeader = styled.header`
   background: transparent;
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-end;
 `
 
 const Header = ({ siteTitle }) => (
   <SiteHeader>
     <Content>
       <p>
-        <HomeLink to="/">{siteTitle}</HomeLink>
+        <HomeLink to="/">Home</HomeLink>
         <NavLink to="/blog">Blog</NavLink>
         <GitHubLink href="https://github.com/Ha-Young">GitHub</GitHubLink>
       </p>

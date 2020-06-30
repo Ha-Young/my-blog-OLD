@@ -25,15 +25,16 @@ const Description = styled.p`
 const NameHeader = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 0;
+  margin-top: 1rem;
 `
 
 const LandingBio = () => {
   const data = useStaticQuery(graphql`
     query LandingBioQuery {
-      profileImg: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      profileImg: file(relativePath: { eq: "profile.png" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+          fixed(width: 125, height: 125) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -48,11 +49,25 @@ const LandingBio = () => {
   `)
 
   const { title, subtitle, author } = data.site.siteMetadata
+  const { fixed: profileImg } = data.profileImg.childImageSharp
 
   return (
     <OuterContainer>
       {console.log(data)}
       <Container>
+        <Image
+          fixed={profileImg}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt={author}
+          style={{
+            marginBottom: 0,
+            borderRadius: `100%`,
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        />
         <NameHeader>{title}</NameHeader>
         <hr />
         <Description>{subtitle}</Description>
