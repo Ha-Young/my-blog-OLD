@@ -1,10 +1,16 @@
 import React from "react"
-import styled from "@emotion/styled"
-
-const aboutBlock = styled.div``
+import ProfileSection from "../components/about/profileSection"
+import SkillSection from "../components/about/skillSection"
+import SEO from "../components/seo"
 
 function About() {
-  return <div>About</div>
+  return (
+    <>
+      <SEO title="About" keywords={[`gatsby`, `application`, `react`]} />
+      <ProfileSection />
+      <SkillSection />
+    </>
+  )
 }
 
 export default About
