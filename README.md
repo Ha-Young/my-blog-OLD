@@ -8,7 +8,7 @@
   Gatsby Starter Julia
 </h1>
 <h2 align="center">
-  start 사용 후 커스터마이징 하였습니다.  
+  starter 사용 후 커스터마이징 하였습니다.  
 </h2>
 
 [GatsbyJS](https://www.gatsbyjs.org/) is a free and open source static website builder build on React. It's one implementation of the [JAMstack](https://jamstack.org/) idea which creates high speed webpages.
