@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Utterances from "../utils/uterrances"
+import "katex/dist/katex.min.css"
 
 const Content = styled.div`
   margin: 0 auto;
@@ -76,13 +77,6 @@ export const pageQuery = graphql`
         date(formatString: "DD MMMM, YYYY")
         path
         title
-        featuredImage {
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
       }
       fields {
         readingTime {
