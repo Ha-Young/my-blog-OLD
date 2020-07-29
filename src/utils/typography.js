@@ -32,4 +32,6 @@ const typography = new Typography({
   boldWeight: 700,
 })
 
+export const { rhythm, scale } = typography
+
 export default typography
