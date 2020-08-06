@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby Starter Julia
+  하영의 블로그
 </h1>
 <h2 align="center">
   starter 사용 후 커스터마이징 하였습니다.  
