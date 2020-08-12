@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
 
 import Header from "./header"
-//import "./layout.css"
+import "./layout.css"
 
 const Content = styled.div`
   margin: 0 auto;
