@@ -82,6 +82,8 @@ const SkillSection = (props) => {
     Others: {
       "C#": 3,
       Winform: 3,
+      OpenCV: 2,
+      "C++": 2,
       Git: 2,
       "Scrapping (Python)": 2,
       Tensorflow: 1,
