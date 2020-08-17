@@ -1,3 +1,5 @@
+const lessToJson = require("less-to-json")
+
 module.exports = {
   siteMetadata: {
     title: `HaYoung's Log`,
@@ -82,6 +84,21 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-antd",
+      options: {
+        style: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-less",
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: lessToJson("src/theme/vars.less"),
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 import SectionContainer from "./Section/SectionContainer"
 import SectionHeader from "./Section/SectionHeader"
 import Skill from "./Section/Skill"
 import WhiteBox from "./Section/WhiteBox"
 import questionSvg from "../../icons/question.svg"
+import { Modal } from "antd"
+import Stars from "./Section/Stars"
 
-const SkillSection = (props) => {
+const SkillSection = () => {
   const styles = {
     grid: {
       display: "grid",
@@ -92,61 +94,89 @@ const SkillSection = (props) => {
     },
   }
 
+  const showModal = () => {
+    Modal.info({
+      title: "Skill Info",
+      content: (
+        <div>
+          <div>
+            <Stars countOfStars={3} />
+            <p>고급 기능까지 문서없이 구현 가능</p>
+          </div>
+          <div>
+            <Stars countOfStars={2} />
+            <p>
+              고급 기능은 문서를 참조해야 하고 기초기능은 문서참조를 하지않아도
+              됨.
+            </p>
+          </div>
+          <div>
+            <Stars countOfStars={1} />
+            <p>기초 지식과 사용은 무리가 없으나 문서참조를 자주해야 됨.</p>
+          </div>
+        </div>
+      ),
+      onOk: () => {},
+    })
+  }
+
   return (
-    <SectionContainer id="skill" isTop>
-      <SectionHeader text="Skills" />
-      <div css={styles.grid}>
-        <WhiteBox css={styles.whiteBox}>
-          <div style={{ position: "relative" }}>
-            <h3>Frontend</h3>
-            <div
-              css={styles.helpButton}
-              // onClick={() => props.setCurrentModal("SKILL_HELP")}
-              // onKeyDown={(e) => {
-              //   if (e.keyCode === 13) props.setCurrentModal("SKILL_HELP")
-              // }}
-              role="button"
-              tabIndex={0}
-            >
-              <img src={questionSvg} alt="hint button" />
+    <>
+      <SectionContainer id="skill" isTop>
+        <SectionHeader text="Skills" />
+        <div css={styles.grid}>
+          <WhiteBox css={styles.whiteBox}>
+            <div style={{ position: "relative" }}>
+              <h3>Frontend</h3>
+              <div
+                css={styles.helpButton}
+                onClick={() => showModal()}
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) showModal()
+                }}
+                role="button"
+                tabIndex={0}
+              >
+                <img src={questionSvg} alt="hint button" />
+              </div>
+              {Object.keys(skills.Frontend).map((skill) => (
+                <Skill
+                  skillName={skill}
+                  skillLevel={skills.Frontend[skill]}
+                  key={skill}
+                />
+              ))}
             </div>
-            {Object.keys(skills.Frontend).map((skill) => (
-              <Skill
-                skillName={skill}
-                skillLevel={skills.Frontend[skill]}
-                key={skill}
-              />
-            ))}
-          </div>
-        </WhiteBox>
+          </WhiteBox>
 
-        <WhiteBox css={styles.whiteBox}>
-          <div>
-            <h3>Backend</h3>
-            {Object.keys(skills.Backend).map((skill) => (
-              <Skill
-                skillName={skill}
-                skillLevel={skills.Backend[skill]}
-                key={skill}
-              />
-            ))}
-          </div>
-        </WhiteBox>
+          <WhiteBox css={styles.whiteBox}>
+            <div>
+              <h3>Backend</h3>
+              {Object.keys(skills.Backend).map((skill) => (
+                <Skill
+                  skillName={skill}
+                  skillLevel={skills.Backend[skill]}
+                  key={skill}
+                />
+              ))}
+            </div>
+          </WhiteBox>
 
-        <WhiteBox css={styles.whiteBox}>
-          <div>
-            <h3>Others</h3>
-            {Object.keys(skills.Others).map((skill) => (
-              <Skill
-                skillName={skill}
-                skillLevel={skills.Others[skill]}
-                key={skill}
-              />
-            ))}
-          </div>
-        </WhiteBox>
-      </div>
-    </SectionContainer>
+          <WhiteBox css={styles.whiteBox}>
+            <div>
+              <h3>Others</h3>
+              {Object.keys(skills.Others).map((skill) => (
+                <Skill
+                  skillName={skill}
+                  skillLevel={skills.Others[skill]}
+                  key={skill}
+                />
+              ))}
+            </div>
+          </WhiteBox>
+        </div>
+      </SectionContainer>
+    </>
   )
 }
 
