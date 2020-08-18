@@ -41,12 +41,8 @@ Ant Design은 10가지 디자인 원칙을 얘기하고 각 원칙을 사례 중
 
 와 같은 철학이 담겨있다.
 
-
-
 그 외에도 나의 블로그에 매우 도움이 될만한 **레이아웃, 컴포넌트, 아이콘** 등이 있어서
 결정을 하게 되었다.
-
-
 
 ### Gatsby에 Ant Design 적용시키기
 
@@ -66,7 +62,7 @@ Gatsby이기 때문에 gatsby-antd-plugin 또한 설치해야 한다.
 npm install antd gatsby-antd-plugin
 ```
 
-혹은 
+혹은
 
 ```bash
 yarn add antd gatsby-antd-plugin
@@ -81,23 +77,21 @@ yarn add antd gatsby-antd-plugin
 그럼 당연히 **gatsby-config.js**에서 처리를 해줘야겠지.
 
 ```javascript
-plugins:[
-    {
-        resolve: "gatsby-plugin-antd",
-        options: {
-            style: true
-        }
-    }
+plugins: [
+  {
+    resolve: "gatsby-plugin-antd",
+    options: {
+      style: true,
+    },
+  },
 ]
 ```
 
 와 같이 plugins 배열에 위 객체를 주가해주면 된다.
 
-
-
 #### 3. 나의 Gatsby 프로젝트에 antd 적용시키기
 
-나는 우선적으로 나의 Gatsby 프로젝트에 적용시켜야 될 것이 
+나는 우선적으로 나의 Gatsby 프로젝트에 적용시켜야 될 것이
 Modal Component였는데, 이를 적용시키면서 설명을 하겠다.
 
 우선 React와 동일하게 antd로부터 사용해야 된다.
@@ -130,35 +124,33 @@ showModal 함수는
 
 ```javascript
 const showModal = () => {
-    Modal.info({
-      title: "Skill Info",
-      content: (
+  Modal.info({
+    title: "Skill Info",
+    content: (
+      <div>
         <div>
-          <div>
-            <Stars countOfStars={3} />
-            <p>고급 기능까지 문서없이 구현 가능</p>
-          </div>
-          <div>
-            <Stars countOfStars={2} />
-            <p>
-              고급 기능은 문서를 참조해야 하고 기초기능은 문서참조를 하지않아도
-              됨.
-            </p>
-          </div>
-          <div>
-            <Stars countOfStars={1} />
-            <p>기초 지식과 사용은 무리가 없으나 문서참조를 자주해야 됨.</p>
-          </div>
+          <Stars countOfStars={3} />
+          <p>고급 기능까지 문서없이 구현 가능</p>
         </div>
-      ),
-      onOk: () => {},
-    })
-  }
+        <div>
+          <Stars countOfStars={2} />
+          <p>
+            고급 기능은 문서를 참조해야 하고 기초기능은 문서참조를 하지않아도
+            됨.
+          </p>
+        </div>
+        <div>
+          <Stars countOfStars={1} />
+          <p>기초 지식과 사용은 무리가 없으나 문서참조를 자주해야 됨.</p>
+        </div>
+      </div>
+    ),
+    onOk: () => {},
+  })
+}
 ```
 
 다음과 같이 구현하였다.
-
-
 
 #### 4. less쪽 error 발견
 
@@ -167,8 +159,6 @@ const showModal = () => {
 <img src=".\lessError.JPG" alt="image-20200728164139495" style="zoom:100%;" />
 
 해당 애러내용은 찾아보니 antd 모듈은 less 모듈을 사용하는데 이 less모듈이 없어서 나는 애러였다.
-
-
 
 #### 5. less 모듈, gatsby-plugin 설치 및 config 적용
 
@@ -182,37 +172,31 @@ yarn을 쓸거면 yarn으로 add시켜도 된다.
 
 less-to-json은 사용에 다른 문제가 있어서 로컬파일에서 less를 만들어 쓸 것이기 때문에 추가.
 
-
-
 그 후에 plugin을 설치했으므로 당연히 **gatsby-config.js에 추가**해야된다.
 
 ```javascript
 plugins: [
-    {
-        resolve: "gatsby-plugin-antd",
-        options: {
-            style: true,
-        },
+  {
+    resolve: "gatsby-plugin-antd",
+    options: {
+      style: true,
     },
-    {
-        resolve: "gatsby-plugin-less",
-        options: {
-            lessOptions: {
-                javascriptEnabled: true,
-            },
-        },
+  },
+  {
+    resolve: "gatsby-plugin-less",
+    options: {
+      lessOptions: {
+        javascriptEnabled: true,
+      },
     },
+  },
 ]
 ```
 
-아래 gatsby-plugin-less를 추가하고 
+아래 gatsby-plugin-less를 추가하고
 Option값에 javascriptEnabled를 반드시 true로 설정해야 한다.
 
-
-
 다시 gatsby develop를 하자.
-
-
 
 #### 6. 또 다른 애러 확인
 
@@ -220,9 +204,7 @@ Option값에 javascriptEnabled를 반드시 true로 설정해야 한다.
 이제 한번에 되는게 이상할 정도....
 이번 문제는 이랬다.
 
-![](C:\projects\my-blog\src\content\Gatsby\2020-08-17-Gatsby---Gatsby에-antd적용시키기\noJavascriptEnabled.JPG)
-
-
+![](.\noJavascriptEnabled.JPG)
 
 찾다찾다 안나와서 그냥 gatsby starter pack 중에서 ant design을 사용한 것이 있길래 해당 git을 clone해서 참조해보았다.
 
@@ -239,8 +221,6 @@ starter pack에서 이렇게 사용하면 방법이 이런가보다.
 npm install less-to-json
 ```
 
-
-
 설치를 했으면 적용해야되는데,
 
 **gatsby-config.js**에 추가해야 될 것이 있다.
@@ -255,21 +235,21 @@ const lessToJson = require("less-to-json")
 
 ```javascript
 plugins: [
-    {
-        resolve: "gatsby-plugin-antd",
-        options: {
-            style: true,
-        },
+  {
+    resolve: "gatsby-plugin-antd",
+    options: {
+      style: true,
     },
-    {
-        resolve: "gatsby-plugin-less",
-        options: {
-            lessOptions: {
-                javascriptEnabled: true,
-                modifyVars: lessToJson("src/theme/vars.less"),
-            },
-        },
+  },
+  {
+    resolve: "gatsby-plugin-less",
+    options: {
+      lessOptions: {
+        javascriptEnabled: true,
+        modifyVars: lessToJson("src/theme/vars.less"),
+      },
     },
+  },
 ]
 ```
 
@@ -295,8 +275,6 @@ plugins: [
 @box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // major shadow for layers
 ```
 
-
-
 자 이제 끝났다.
 
 #### 8. 확인
@@ -306,10 +284,5 @@ Gatsby 프로젝트를 꾸며보자!
 
 ![modal](.\modal.jpg)
 
-
-
 만약 안되면
 npm 모듈을 clean하고 reinstall 하도록 하자.
-
-
-

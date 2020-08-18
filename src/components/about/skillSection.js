@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import PropTypes from "prop-types"
-import React, { useState } from "react"
+import React from "react"
 import SectionContainer from "./Section/SectionContainer"
 import SectionHeader from "./Section/SectionHeader"
 import Skill from "./Section/Skill"
