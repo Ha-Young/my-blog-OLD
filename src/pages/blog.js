@@ -12,6 +12,18 @@ const Content = styled.div`
   padding: 1.45rem 1.0875rem;
 `
 
+const PostBlock = styled.div`
+  margin: 1em 0em;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid white;
+  transition: all 0.7s;
+  &:hover {
+    background-color: #f2f0d5;
+    border: 1px dashed black;
+  }
+`
+
 const ArticleDate = styled.h5`
   display: inline;
   color: #606060;
@@ -22,9 +34,9 @@ const MarkerHeader = styled.h3`
   border-radius: 1em 0 1em 0;
   background-image: linear-gradient(
     -100deg,
-    rgba(255, 250, 150, 0.15),
-    rgba(255, 250, 150, 0.8) 100%,
-    rgba(255, 250, 150, 0.25)
+    rgba(244, 243, 232, 0.15),
+    rgba(244, 243, 232, 0.8) 100%,
+    rgba(244, 243, 232, 0.25)
   );
 `
 
@@ -46,7 +58,7 @@ const IndexPage = ({ data }) => {
             return date < new Date()
           })
           .map(({ node }) => (
-            <div key={node.id}>
+            <PostBlock key={node.id}>
               <Link
                 to={node.frontmatter.path}
                 css={css`
@@ -61,7 +73,7 @@ const IndexPage = ({ data }) => {
                 </div>
                 <p>{node.excerpt}</p>
               </Link>
-            </div>
+            </PostBlock>
           ))}
       </Content>
     </Layout>

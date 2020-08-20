@@ -17,9 +17,9 @@ const MarkedHeader = styled.h1`
   border-radius: 1em 0 1em 0;
   background-image: linear-gradient(
     -100deg,
-    rgba(255, 250, 150, 0.15),
-    rgba(255, 250, 150, 0.8) 100%,
-    rgba(255, 250, 150, 0.25)
+    rgba(244, 243, 232, 0.15),
+    rgba(244, 243, 232, 0.8) 100%,
+    rgba(244, 243, 232, 0.25)
   );
 `
 

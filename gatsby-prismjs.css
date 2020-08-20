@@ -28,6 +28,12 @@
   text-transform: uppercase;
 }
 
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding: 0em;
+  padding-left: 3.8em;
+  overflow: initial;
+}
+
 .gatsby-highlight pre[class*="language-javascript"]::before {
   content: "js";
   background: #f7df1e;
@@ -52,8 +58,20 @@
   color: white;
 }
 
-.gatsby-highlight pre[class*="language-"].line-numbers {
-  padding: 0em;
-  padding-left: 3.8em;
-  overflow: initial;
+.gatsby-highlight pre[class*="language-c"]::before {
+  content: "c";
+  background: #74c0fc;
+  color: white;
+}
+
+.gatsby-highlight pre[class*="language-c++"]::before {
+  content: "c++";
+  background: #339af0;
+  color: white;
+}
+
+.gatsby-highlight pre[class*="language-bash"]::before {
+  content: "bash";
+  background: white;
+  color: black;
 }
