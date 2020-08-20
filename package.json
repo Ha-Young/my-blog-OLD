@@ -22,7 +22,6 @@
     "gatsby-plugin-emotion": "^4.3.3",
     "gatsby-plugin-less": "^4.0.3",
     "gatsby-plugin-manifest": "^2.4.10",
-    "gatsby-plugin-netlify": "^2.3.4",
     "gatsby-plugin-offline": "^3.2.8",
     "gatsby-plugin-react-helmet": "^3.3.3",
     "gatsby-plugin-sharp": "^2.6.23",
