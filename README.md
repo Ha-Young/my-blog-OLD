@@ -7,11 +7,41 @@
 <h1 align="center">
   하영의 블로그
 </h1>
-<h2 align="center">
-  starter 사용 후 커스터마이징 하였습니다.  
-</h2>
 
-[GatsbyJS](https://www.gatsbyjs.org/) is a free and open source static website builder build on React. It's one implementation of the [JAMstack](https://jamstack.org/) idea which creates high speed webpages.
+[하영의 블로그입니다](https://ha-young.github.io/static/8e424d905a882bb161a9f0cc92b57896/905ea/profile.png)
+
+# 작업 할 것
+
+- [ ] 페이지네이션
+- [ ] 어바웃페이지 클릭유도
+- [ ] 모달 제자리에 뜨도록하기
+- [ ] 어바웃페이지 <나는 이런사람 입니다> - 기본기를 중요시, 사람을 좋아함, 튀지않음, 대화를 좋아함, 매일 성장하고싶어함, 책임감 투철, 사람에 대해 분석하고 맞춰가는 걸 잘함, 빠른 수용
+- [ ] 어바웃페이지 <나는 이런 회사를 선호합니다> - 애정을 가지고 일 할 수 있는 회사, 일하는 보람이 나는 회사, 주인의식을 가질 수 있는 회사
+- [ ] 어바웃페이지 <나는 이런 팀을 선호합니다> - 함께 발전, 커뮤니케이션 원활, 협업의 중요성을 아는, JD가 명확한, 하는일이 무엇인지 정확하게 알려주는,
+
+# 포스팅 할 것
+
+## Daily
+
+- [ ] 8월의 생각
+
+## Question
+
+- [ ] 나는 어떤 개발자가 되어야 할까?
+
+## 기술 블로그
+
+### 알고리즘
+
+### 머신러닝
+
+### C++
+
+### JavaScript
+
+### React
+
+###
 
 ## 📚 Features:
 
