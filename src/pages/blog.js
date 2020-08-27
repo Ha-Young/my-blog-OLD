@@ -14,7 +14,7 @@ const Content = styled.div`
 
 const PostBlock = styled.div`
   margin: 1em 0em;
-  padding: 1em;
+  padding: 2em;
   border-radius: 1em;
   border: 1px solid white;
   transition: all 0.7s;
