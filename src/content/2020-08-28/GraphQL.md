@@ -1,8 +1,8 @@
 ---
-Title: "GraphQL이란?"
+title: "GraphQL이란?"
 date: "2020-08-28 18:00"
 draft: false
-Path: "/GraphQL/what"
+path: "/GraphQL/what"
 ---
 
 # GraphQL?
@@ -16,12 +16,9 @@ GraphQL은 웹 개발을 하는 사람이면 한번쯤 들어봤을 것 같다.
 기술을 완벽하게 익힌다음에 넘어가서 배울거라고 생각했었다.
 
 하지만 블로그를 Gatsby로 만드려고 하다보니 GraphQL을 알아야 될 수 밖에 없었는데,
-Gatsby 기술스택에 GraphQL지원이 있어서이다. 
+Gatsby 기술스택에 GraphQL 있어서 알아보았다.
 
-GraphQL을 설명하기전에 너무 알기쉽게 설명한 유튜브 동영상이 있어서 하나 추천하고 글을 적도록 하겠다.
-
-잘 이해가 안되서 여기저기 찾아봤는데
-그 중에서 너무 설명을 잘 한 유튜브가 있었다.
+(여기저기 찾아봤는데 그 중에서 너무 설명을 잘 한 유튜브가 있어서 추천.)
 
 [![YouTube](http://img.youtube.com/vi/EkWI6Ru8lFQ/0.jpg)](https://www.youtube.com/watch?v=EkWI6Ru8lFQ)
 
@@ -152,3 +149,4 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
 ```
 
 다음과 같이 mutation 키워드를 사용하면서 create를 질의할 수 있다.
+
