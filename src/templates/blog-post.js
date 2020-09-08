@@ -46,6 +46,31 @@ const MarkdownContent = styled.div`
       background-size: 100% 88%;
     }
   }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1.5rem 0;
+  }
+  p ~ h1 {
+    margin-top: 5rem;
+  }
+  p ~ h2 {
+    margin-top: 4.5rem;
+  }
+  p ~ h3 {
+    margin-top: 4rem;
+  }
+  p ~ h4 {
+    margin-top: 3.5rem;
+  }
+  p ~ h5 {
+    margin-top: 3rem;
+  }
+  p ~ h6 {
+    margin-top: 2.5rem;
+  }
 `
 
 export default ({ data }) => {

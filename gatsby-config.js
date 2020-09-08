@@ -13,7 +13,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/content`,
+        path: `${__dirname}/content`,
       },
     },
     {
@@ -74,8 +74,8 @@ module.exports = {
         name: `Ha-Young's Log`,
         short_name: `Ha-Young's Log`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#e8e6d5`,
+        theme_color: `#e8e6d5`,
         display: `minimal-ui`,
         icon: `src/images/logo_haong.png`, // This path is relative to the root of the site.
       },
