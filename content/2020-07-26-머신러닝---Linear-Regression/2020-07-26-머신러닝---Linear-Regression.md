@@ -29,7 +29,7 @@ html header: <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"><
 
 ### 1. 가설 (Hypothesis) 세우기
 
-![image-1](.\image-1.jpg)
+![image-1](./image-1.jpg)
 
 > 우리가 데이터셋을 보고 **가설**을 세울 수가 있는데,
 > 공부한 시간이 많을수록 점수가 잘나온다던지,
@@ -40,7 +40,7 @@ html header: <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"><
 
 그리고 우리가 세운 가설(Hypothesis)은 H(x) = Wx + b 와 같다.
 
-<img src=".\image-2.jpg" alt="image-2" style="zoom:50%;" />
+<img src="./image-2.jpg" alt="image-2" style="zoom:50%;" />
 
 이렇게 H(x)의 가설이 1차방정식이 될 것이다 라고 하는게 LinearRegression의 첫번째 단계
 
@@ -95,7 +95,7 @@ $$
 
 기본적으로 제곱이 들어가있는 2차함수이기 때문에 다음과 같은 형태가 될 것이다.
 
-<img src=".\image-3.jpg" alt="image-20200728164139495" style="zoom:75%;" />
+<img src="./image-3.jpg" alt="image-20200728164139495" style="zoom:75%;" />
 
 그렇다면 cost가 가장 적은 지점이 어디일까?
 
@@ -129,7 +129,7 @@ $$
    W = W - \frac{\partial}{\partial W}cost(W)
 $$
 
-4) 계속해서 W를 줄여나간다
+4. 계속해서 W를 줄여나간다
 
 $$
    W:= W - \frac{\partial}{\partial W}cost(W)
