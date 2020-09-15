@@ -11,7 +11,7 @@ n x m 크기 도화지에 그려진 그림의 색깔이 2차원 리스트로 주
 
 예를 들어, [[1,2,3], [3,2,1]] 같은 리스트는 다음과 같이 표현할 수 있습니다.
 
-![574846660.46.png](./2020-09-04-[1주차-Queue-&-Heap]-FloodFill_1.png)
+![574846660.46.png](./2020-09-04-FloodFill_1.png)
 
 이때, 이 그림에는 총 5개 영역이 있습니다.
 
@@ -28,10 +28,10 @@ n x m 크기 도화지에 그려진 그림의 색깔이 2차원 리스트로 주
 
 ## 입출력 예
 
-| n    | m    | images                   | 정답 |
-| ---- | ---- | ------------------------ | ---- |
-| 2    | 3    | [[1, 2, 3], [3, 2, 1]]   | 5    |
-| 3    | 2    | [[1, 2], [1, 2], [4, 5]] | 4    |
+| n   | m   | images                   | 정답 |
+| --- | --- | ------------------------ | ---- |
+| 2   | 3   | [[1, 2, 3], [3, 2, 1]]   | 5    |
+| 3   | 2   | [[1, 2], [1, 2], [4, 5]] | 4    |
 
 입출력 예 #1
 
@@ -41,7 +41,7 @@ n x m 크기 도화지에 그려진 그림의 색깔이 2차원 리스트로 주
 
 주어진 이미지는 다음과 같이 표현할 수 있습니다.
 
-![22.png](./[1주차 Queue & Heap] Flood Fill_2.png)
+![22.png](./2020-09-04-FloodFill_2.png)
 
 따라서 이 이미지에는 4개 영역이 있습니다.
 
@@ -127,7 +127,9 @@ union은 서로 해당 픽셀에 대해 same_area_check List에 getParent()해�
 
 리뷰나 받아야지....ㅠㅠㅠ
 
+#### 결과
 
+완전 틀렸다.... 7개 중 2개 맞춤...ㅠㅠ
 
 #### 리뷰
 
@@ -138,5 +140,76 @@ union은 서로 해당 픽셀에 대해 same_area_check List에 getParent()해�
 >
 > 이 문제의 경우 색상별로 BFS를 이용해 **전부 채워나간다**라고 생각하시면 조금 더 이해가 쉽습니다. 한 번 도전해보세요!
 
-라고 받았다. BFS, DFS로 적용해봐야겠다.
+
+
+그리고 위 `5, 5, [[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]]` 대로 구불구불한 영역에 대해 노트필기로 알고리즘을 따라가 결과를 봤는데 아래 왼쪽과 같이 2개의 영역이 나와야 되는데,
+오른쪽 처럼 마지막에 이어지지 못하고 끊겨버리는 현상이 있었다.
+
+아무래도 쭉 이어서 탐색하는것이 아니다 보니까 이런 예외가 있는것이 당연한 것 같다..ㅎㅎㅎ
+
+<img src="./2020-09-04-FloodFill_3.png" alt="image-20200908161856779" style="zoom: 25%;" />
+
+
+
+다음에 BFS, DFS로 적용해봐야겠다.
+
+
+
+### 두번째 풀이
+
+#### 소스
+
+```python
+def find_linked_area_dfs(row, col, image, visited):
+    row_max_idx = len(image) - 1
+    col_max_idx = len(image[0]) - 1
+
+    stack_dfs = [(row, col)]
+
+    while len(stack_dfs) > 0:
+        (row, col) = stack_dfs.pop()
+        visited[row][col] = True
+
+        # 왼쪽을 본다
+        if row > 0 and image[row][col] == image[row - 1][col] and not visited[row - 1][col]:
+            stack_dfs.append((row - 1, col))
+
+        # 오른쪽을 본다
+        if row < row_max_idx and image[row][col] == image[row + 1][col] and not visited[row + 1][col]:
+            stack_dfs.append((row + 1, col))
+
+        # 위쪽을 본다
+        if col > 0 and image[row][col] == image[row][col - 1] and not visited[row][col - 1]:
+            stack_dfs.append((row, col - 1))
+
+        # 아래쪽을 본다
+        if col < col_max_idx and image[row][col] == image[row][col + 1] and not visited[row][col + 1]:
+            stack_dfs.append((row, col + 1))
+
+
+def solution(n, m, image):
+    area_number = 0
+    visited = [[False]*m for _ in range(n)]
+
+    for row in range(n):
+        for col in range(m):
+            if not visited[row][col]:
+                find_linked_area_dfs(row, col, image, visited)
+                area_number += 1
+
+    return area_number
+```
+
+#### 설명
+
+피드백으로 BFS, DFS를 이용하면 된다고 해서 DFS 적용시켜보았다.
+
+먼저, 이미지 영역에 대해 체크(방문)했다는 표식을 위한 visited list를 만들고,
+이미지 영역 각 픽셀을 전부 순회하면서 방문하지 않았으면 인접 영역에 같은 값으로 연결된 영역이 있는지 DFS를 통해 확인을 한다.(DFS로 연결이 확인된 영역은 모두 방문처리가 되어 있을 것이다.)
+
+확실히, Union-Find 보다는 훨씬 간단하게 표현되는 것 같다.
+
+#### 결과
+
+통과.
 
