@@ -213,3 +213,118 @@ def solution(n, m, image):
 
 통과.
 
+### 두 번째 풀이
+
+#### 소스
+
+```python
+def find_linked_area_dfs(row, col, image, visited):
+    row_max_idx = len(image) - 1
+    col_max_idx = len(image[0]) - 1
+
+    stack_dfs = [(row, col)]
+
+    while len(stack_dfs) > 0:
+        (row, col) = stack_dfs.pop()
+        visited[row][col] = True
+
+        # 왼쪽을 본다
+        if row > 0 and image[row][col] == image[row - 1][col] and not visited[row - 1][col]:
+            stack_dfs.append((row - 1, col))
+
+        # 오른쪽을 본다
+        if row < row_max_idx and image[row][col] == image[row + 1][col] and not visited[row + 1][col]:
+            stack_dfs.append((row + 1, col))
+
+        # 위쪽을 본다
+        if col > 0 and image[row][col] == image[row][col - 1] and not visited[row][col - 1]:
+            stack_dfs.append((row, col - 1))
+
+        # 아래쪽을 본다
+        if col < col_max_idx and image[row][col] == image[row][col + 1] and not visited[row][col + 1]:
+            stack_dfs.append((row, col + 1))
+
+
+def solution(n, m, image):
+    area_number = 0
+    visited = [[False]*m for _ in range(n)]
+
+    for row in range(n):
+        for col in range(m):
+            if not visited[row][col]:
+                find_linked_area_dfs(row, col, image, visited)
+                area_number += 1
+
+    return area_number
+```
+
+#### 설명
+
+이전 리뷰를 참고해서 이번에는 DFS를 적용시켰다.
+확실히 DFS로 풀이하면서 알고리즘이 간단해지고 잘 풀리는? 느낌을 받았다.
+
+#### 결과
+
+통과.
+
+#### 리뷰
+
+2주차 세션에서 리더님이 보여주셨는데, DFS 부분에서 왼쪽, 오른쪽, 위, 아래 부분을 볼 때 for 문을 이용해서 줄일 수 있다고 한다.
+
+### 세번째 풀이
+
+#### 소스
+
+```python
+# BFS 혹은 DFS를 이용하는 문제다.
+# DFS = 깊이 우선 탐색 -> 재귀 호출을 많이 사용
+# 파이썬에서 재귀 호출은 느리기 때문에 가급적 BFS를 쓰는 것이 좋다
+from collections import deque
+
+
+def solution(n, m, image):
+    answer = 0
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)] # 이처럼 표현하면 반복되는 if문을 줄일 수 있다.
+
+    for sy in range(n):
+        for sx in range(m):
+            if image[sy][sx] == -1:
+                continue
+
+            target_color = image[sy][sx]
+            deq = deque([(sy, sx)])
+
+            while deq:
+                y, x = deq.popleft() #deque의 popleft는 O(n)
+									 #list의 pop(0)은 O(n)
+                for dy, dx in directions:
+                    py = y + dy
+                    px = x + dx
+                    if px >= m or px < 0 or py >= n or py < 0:
+                        continue
+                    if image[py][px] == target_color:
+                        image[py][px] = -1
+                        deq.append((py, px))
+
+            answer += 1
+
+    return answer
+```
+
+#### 설명
+
+세션에서 보여주신 리더님의 소스이다.
+
+보면 directions로 반복되는 if문을 줄였고,
+image 방문 체크를 image의 값을 -1로 설정하여 방문체크를 하였다. 그래서 따로 배열 생성 X
+
+또 deque를 써서 pop(0)에 걸리는 O(n)의 시간을 O(1)로 줄여주었다.
+
+#### 결과
+
+당연히 통과. (빠른속도로)
+
+#### 시간복잡도
+
+시작지점을 n*m만큼 순회하고 BFS, DFS로 모든 부분을 한번 더 순회하기 때문에
+O( (n * m)^2 ) 가 된다.
