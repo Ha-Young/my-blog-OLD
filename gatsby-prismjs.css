@@ -46,9 +46,15 @@
   color: black;
 }
 
+.gatsby-highlight pre[class*="language-python"]::before {
+  content: "python";
+  background: #1e46f7;
+  color: white;
+}
+
 .gatsby-highlight pre[class*="language-html"]::before {
   content: "html";
-  background: #005a9c;
+  background: #5e9dca;
   color: white;
 }
 
@@ -60,7 +66,7 @@
 
 .gatsby-highlight pre[class*="language-c"]::before {
   content: "c";
-  background: #74c0fc;
+  background: #789bb6;
   color: white;
 }
 
