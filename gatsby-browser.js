@@ -1,14 +1,12 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
-
+// prismjs
 require("prismjs/themes/prism-solarizedlight.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 require("./gatsby-prismjs.css")
+
+// polyfill
+require("intersection-observer")
+
+const metaConfig = require("./gatsby-meta-config")
 
 exports.onInitialClientRender = () => {
   require("typeface-nunito")

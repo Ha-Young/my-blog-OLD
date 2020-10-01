@@ -1,12 +1,8 @@
 const lessToJson = require("less-to-json")
+const metaConfig = require("./gatsby-meta-config")
 
 module.exports = {
-  siteMetadata: {
-    title: `HaYoung's Log`,
-    subtitle: `타고난 대기만성 성장러 하영의 로그`,
-    description: `타고난 대기만성 성장러 하영의 블로그입니다.`,
-    author: `@Ha-Young`,
-  },
+  siteMetadata: metaConfig,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

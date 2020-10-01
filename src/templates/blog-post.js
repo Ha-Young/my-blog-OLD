@@ -88,7 +88,7 @@ export default ({ data }) => {
         </HeaderDate>
         <MarkdownContent dangerouslySetInnerHTML={{ __html: post.html }} />
       </Content>
-      <Utterances repo="Ha-Young/my-blog" />
+      <Utterances repo="Ha-Young/my-blog-old" />
     </Layout>
   )
 }
