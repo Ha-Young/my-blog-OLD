@@ -1,19 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
-
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
-
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -34,13 +18,16 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
         edges {
           node {
             frontmatter {
               path
               draft
-              date
+              category
             }
             fields {
               slug
@@ -53,15 +40,24 @@ exports.createPages = ({ graphql, actions }) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
-    result.data.allMarkdownRemark.edges
-      .filter(({ node }) => !node.frontmatter.draft)
-      .forEach(({ node }) => {
-        createPage({
-          path: node.frontmatter.path,
-          component: blogPostTemplate,
-          slug: node.fields.slug,
-          context: {},
-        })
+
+    const posts = result.data.allMarkdownRemark.edges.filter(
+      ({ node }) => !node.frontmatter.draft && !!node.frontmatter.category
+    )
+
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
+
+      createPage({
+        path: post.node.frontmatter.path,
+        component: blogPostTemplate,
+        context: {
+          slug: post.node.fields.slug,
+          previous,
+          next,
+        },
       })
+    })
   })
 }
