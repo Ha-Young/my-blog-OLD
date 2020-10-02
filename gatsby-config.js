@@ -22,6 +22,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

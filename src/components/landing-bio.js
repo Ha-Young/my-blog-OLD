@@ -72,7 +72,6 @@ const LandingBio = () => {
 
   return (
     <OuterContainer>
-      {console.log(data)}
       <Container>
         <Link to="/about">
           <ProfileImg

@@ -1,7 +1,8 @@
 module.exports = {
-  title: `Ha-Young's Log`,
+  title: `HaYoung's Log`,
+  subtitle: `타고난 대기만성 성장러 하영의 로그`,
   description: `타고난 대기만성 성장러 하영의 로그`,
-  author: `Ha-Young`,
+  author: `@Ha-Young`,
   introduction: `안녕하세요. 타고난 대기만성 성장러 하영의 로그입니다.`,
   siteUrl: `https://ha-young.github.io/`, // Your blog site url
   social: {
@@ -13,7 +14,7 @@ module.exports = {
     instagram: ``,
   },
   icon: `src/images/logo_haong.png`, // Add your favicon
-  keywords: [`blog`],
+  keywords: [`blog`, `gatsby`, `application`, `react`],
   comment: {
     // disqusShortName: "", // Your disqus-short-name. check disqus.com.
     utterances: "Ha-Young/my-blog-old", // Your repository for archive comment
