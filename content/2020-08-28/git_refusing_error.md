@@ -3,6 +3,8 @@ title: "git pull(fatal: refusing to merge unrelated histories) 오류"
 date: "2020-08-28 16:52"
 draft: false
 path: "/git/error_refusing_to_merge"
+category: 'git'
+
 ---
 
 # git pull refusing to merge unrelated

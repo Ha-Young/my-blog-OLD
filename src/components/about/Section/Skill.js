@@ -8,7 +8,6 @@ const propTypes = {
 }
 
 const Skill = ({ skillName, skillLevel }) => {
-  console.log(skillName, skillLevel)
   const styles = {
     container: {
       display: "flex",

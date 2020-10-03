@@ -3,6 +3,7 @@ title: "Gatsby - Markdown 파일에 이미지 올리기 (내부경로 적용시�
 date: "2020-07-29 07:40:00"
 draft: false
 path: "/gatsby/image"
+category: 'gatsby'
 ---
 
 

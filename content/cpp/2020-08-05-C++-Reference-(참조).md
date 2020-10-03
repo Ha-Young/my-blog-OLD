@@ -3,6 +3,8 @@ title: "C++ Reference (참조)"
 date: "2020-08-05 21:27:00"
 draft: false
 path: "/cpp/Ref05"
+category: 'cpp'
+
 ---
 
 ### C++ Reference (참조)

@@ -3,6 +3,7 @@ title: "머신러닝 - Linear Regression"
 date: "2020-07-27 19:50:13"
 draft: false
 path: "/ml/every/2"
+category: 'machine learning'
 html header: <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 ---
 

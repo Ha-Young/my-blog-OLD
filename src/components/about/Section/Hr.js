@@ -11,7 +11,6 @@ const defaultProps = {
 
 const Hr = ({ text }) => {
   const color = "#999999"
-  console.log(text)
 
   const styles = {
     withInnerText: {

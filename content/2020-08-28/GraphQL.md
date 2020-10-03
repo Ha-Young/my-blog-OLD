@@ -3,6 +3,8 @@ title: "GraphQL이란?"
 date: "2020-08-28 18:00"
 draft: false
 path: "/GraphQL/what"
+category: 'graphQL'
+
 ---
 
 # GraphQL?

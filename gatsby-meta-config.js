@@ -14,7 +14,17 @@ module.exports = {
     instagram: ``,
   },
   icon: `src/images/logo_haong.png`, // Add your favicon
-  keywords: [`blog`, `gatsby`, `application`, `react`],
+  keywords: [
+    `blog`,
+    `gatsby`,
+    `application`,
+    `react`,
+    `Ha-Young`,
+    `HaYoung`,
+    `FontEnd`,
+    `Developer`,
+    `Ha-Young's Log`,
+  ],
   comment: {
     // disqusShortName: "", // Your disqus-short-name. check disqus.com.
     utterances: "Ha-Young/my-blog-old", // Your repository for archive comment

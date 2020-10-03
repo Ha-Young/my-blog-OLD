@@ -3,6 +3,8 @@ title: "Gatsby - Markdown에 수학 수식(TeX) 적용시키기, KaTeX 적용시
 date: "2020-07-29 17:30:13"
 draft: false
 path: "/gatsby/KaTeX"
+category: 'gatsby'
+
 ---
 
 ### 수학 수식 입력 필요성

@@ -54,7 +54,7 @@ const SiteHeader = styled.header`
   font-family: "Raleway", cursive;
 `
 
-const Header = ({ siteTitle }) => (
+const Header = ({ location, siteTitle }) => (
   <SiteHeader>
     <Content>
       <p>

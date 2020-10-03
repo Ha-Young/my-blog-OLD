@@ -5,13 +5,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const { siteMetadata } = data.site
 
   useIntersectionObserver()
 
   return (
-    <Layout>
+    <Layout location={location} title={siteMetadata.title}>
       <SEO title="Home" keywords={siteMetadata.keywords} />
       <LandingBio />
     </Layout>

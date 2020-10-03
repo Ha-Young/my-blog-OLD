@@ -3,6 +3,8 @@ title: "Gatsby에서 Ant Design적용시키기"
 date: "2020-08-17 22:10:13"
 draft: false
 path: "/gatsby/antd"
+category: 'gatsby'
+
 ---
 
 ### Gatsby에서 Ant Design 적용시키기

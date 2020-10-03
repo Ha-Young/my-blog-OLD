@@ -1,10 +1,18 @@
-import React from "react"
+import React, { useMemo } from "react"
+import _ from "lodash"
+import Layout from "../components/layout"
+import styled from "@emotion/styled"
+import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
-import styled from "@emotion/styled"
-
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { Category } from "../components/category"
+import { useCategory } from "../hooks/useCategory"
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
+import { useRenderedCount } from "../hooks/useRenderedCount"
+import { useScrollEvent } from "../hooks/useScrollEvent"
+import * as Dom from "../utils/dom"
+import * as EventManager from "../utils/event-manager"
+import { CATEGORY_TYPE } from "../constants"
 
 const Content = styled.div`
   margin: 0 auto;
@@ -45,36 +53,81 @@ const ReadingTime = styled.h5`
   color: #606060;
 `
 
-const IndexPage = ({ data }) => {
+const BASE_LINE = 80
+
+function getDistance(currentPos) {
+  return Dom.getDocumentHeight() - currentPos
+}
+
+const IndexPage = ({ data, location }) => {
+  const { siteMetadata } = data.site
+  const { countOfInitialPost } = siteMetadata.configs
+  const posts = data.allMarkdownRemark.edges.filter(({ node }) => {
+    const rawDate = node.frontmatter.rawDate
+    const date = new Date(rawDate)
+    return date < new Date()
+  })
+
+  const categories = useMemo(
+    () => _.uniq(posts.map(({ node }) => node.frontmatter.category)),
+    []
+  )
+
+  const [count, countRef, increaseCount] = useRenderedCount()
+  const [category, selectCategory] = useCategory()
+
+  useIntersectionObserver()
+  useScrollEvent(() => {
+    const currentPos = window.scrollY + window.innerHeight
+    const isTriggerPos = () => getDistance(currentPos) < BASE_LINE
+    const doesNeedMore = () =>
+      posts.length > countRef.current * countOfInitialPost
+
+    return EventManager.toFit(increaseCount, {
+      dismissCondition: () => !isTriggerPos(),
+      triggerCondition: () => isTriggerPos() && doesNeedMore(),
+    })()
+  })
+
+  const refinedPosts = useMemo(() =>
+    posts
+      .filter(
+        ({ node }) =>
+          category === CATEGORY_TYPE.ALL ||
+          node.frontmatter.category === category
+      )
+      .slice(0, count * countOfInitialPost)
+  )
+
   return (
     <Layout>
       <SEO title="Blog" />
+      <Category
+        categories={categories}
+        category={category}
+        selectCategory={selectCategory}
+      />
       <Content>
         <h1>Blog</h1>
-        {data.allMarkdownRemark.edges
-          .filter(({ node }) => {
-            const rawDate = node.frontmatter.rawDate
-            const date = new Date(rawDate)
-            return date < new Date()
-          })
-          .map(({ node }) => (
-            <PostBlock key={node.id}>
-              <Link
-                to={node.frontmatter.path}
-                css={css`
-                  text-decoration: none;
-                  color: inherit;
-                `}
-              >
-                <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
-                <div>
-                  <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                  <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
-                </div>
-                <p>{node.excerpt}</p>
-              </Link>
-            </PostBlock>
-          ))}
+        {console.log("category", category)}
+        {refinedPosts.map(({ node }) => (
+          <PostBlock key={node.id}>
+            <Link
+              to={node.frontmatter.path}
+              css={css`
+                text-decoration: none;
+                color: inherit;
+              `}
+            >
+              <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
+              <div>
+                <ArticleDate>{node.frontmatter.date}</ArticleDate>
+                <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
+              </div>
+              <p>{node.excerpt}</p>
+            </Link>
+          </PostBlock>
+        ))}
       </Content>
     </Layout>
   )
@@ -87,21 +140,27 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        configs {
+          countOfInitialPost
+        }
       }
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { draft: { eq: false } } }
+      filter: { frontmatter: { category: { ne: null }, draft: { eq: false } } }
     ) {
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 200, truncate: true)
           id
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
             rawDate: date
             path
+            category
+            draft
           }
           fields {
             slug
@@ -109,7 +168,6 @@ export const query = graphql`
               text
             }
           }
-          excerpt
         }
       }
     }

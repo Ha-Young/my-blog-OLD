@@ -3,6 +3,8 @@ title: "[3주차 Searching] 카페 - Lv2"
 draft: false
 date: "2020-09-21 20:06"
 path: "/algorithm/programmers/study_week3_2"
+category: 'code test'
+
 ---
 
 ###### 문제 설명

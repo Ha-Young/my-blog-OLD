@@ -5,6 +5,13 @@ module.exports = {
   siteMetadata: metaConfig,
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-feed`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-lodash`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,10 +26,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-emotion`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -51,25 +54,11 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-netlify`,
-    //   options: {
-    //     headers: {
-    //       "/*": ["Strict-Transport-Security: max-age=63072000"],
-    //     }, // option to add more headers. `Link` headers are transformed by the below criteria
-    //     allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
-    //     mergeSecurityHeaders: true, // boolean to turn off the default security headers
-    //     mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
-    //     mergeCachingHeaders: true, // boolean to turn off the default caching headers
-    //     transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
-    //     generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Ha-Young's Log`,
-        short_name: `Ha-Young's Log`,
+        name: metaConfig.title,
+        short_name: metaConfig.title,
         start_url: `/`,
         background_color: `#e8e6d5`,
         theme_color: `#e8e6d5`,
@@ -98,6 +87,20 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-netlify`,
+    //   options: {
+    //     headers: {
+    //       "/*": ["Strict-Transport-Security: max-age=63072000"],
+    //     }, // option to add more headers. `Link` headers are transformed by the below criteria
+    //     allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
+    //     mergeSecurityHeaders: true, // boolean to turn off the default security headers
+    //     mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
+    //     mergeCachingHeaders: true, // boolean to turn off the default caching headers
+    //     transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
+    //     generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

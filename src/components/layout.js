@@ -37,7 +37,7 @@ const Footer = styled.footer`
   }
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ title, location, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -49,8 +49,8 @@ const Layout = ({ children }) => (
       }
     `}
     render={(data) => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+      <React.Fragment>
+        <Header location={location} siteTitle={data.site.siteMetadata.title} />
         <Content>
           <main>{children}</main>
           <Footer>
@@ -61,7 +61,7 @@ const Layout = ({ children }) => (
             <GatsbyLink href="https://www.gatsbyjs.org">Gatsby</GatsbyLink>
           </Footer>
         </Content>
-      </>
+      </React.Fragment>
     )}
   />
 )
