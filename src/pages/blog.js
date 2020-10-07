@@ -109,7 +109,6 @@ const IndexPage = ({ data, location }) => {
       />
       <Content>
         <h1>Blog</h1>
-        {console.log("category", category)}
         {refinedPosts.map(({ node }) => (
           <PostBlock key={node.id}>
             <Link
