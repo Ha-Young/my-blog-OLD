@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week3_op2"
 category: "vanilla coding"
 ---
 
-
-
 # Prep 3주차 수요일 오피스아워 정리
 
 ## Primitive Vs Reference
@@ -96,7 +94,7 @@ console.log(vanillacoding);
 
 - var : 함수 스코프 변수 선언
 - let : 블록 스코프 변수 선언
-- const : 재할당이 불가능한 변수 선언(constant)
+- const : 블록 스코프의 재할당이 불가능한 변수 선언(constant)
 
 
 
@@ -107,7 +105,8 @@ let vanilla = "coding";
 let vanilla = "icecream"; 
 ```
 
-우리가 let, const는 재선언이 안된다고 배웠는데, 다음과 같이 하면 된다. 이는 **블록 외부라서 되는 것**이고
+우리가 let, const는 재선언이 안된다고 배웠는데, 위 처럼 하면 재선언이 된다. 이는 **블록 외부라서 되는 것**.
+아래와 같이 하면 애러 발생
 
 ```js
 {
@@ -208,6 +207,3 @@ tab은 git을 쓸 때 문제가 생길수도 있다.
 - 이제 오피스아워 첫 시작에 자기소개시간?
   - 이전시간에 소개자가 지목!
 - 이번주 과제 저번주보다 쪼끔 어려울수도 있는데, 그래도 괜찮을거다.
-
-
-

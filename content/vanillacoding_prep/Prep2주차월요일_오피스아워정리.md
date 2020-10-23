@@ -1,229 +1,157 @@
 ---
-title: "Prep 2주차 월요일 오피스아워 정리"
+title: "Prep 3주차 월요일 오피스아워 정리"
 draft: false
-date: "2020-10-13 21:05:00"
-path: "/vanillacoding/prep/week2_op1"
+date: "2020-10-19 20:54:00"
+path: "/vanillacoding/prep/week3_op1"
 category: "vanilla coding"
 ---
 
+# Prep 3주차 월요일 오피스아워 정리
+
+## 함수 Naming
+
+함수 이름은 동사로 시작하는 것이 일반적.
+
+국내에만 국한된 것이 아니라 세계적으로 쓰는 컨벤션.
+
+영어로 이해할 수 있게 잘 네이밍 하는 것이 상당히 중요하다.
 
 
 
+## 영어 문서!
 
-# Prep 2주차 월요일 오피스아워 정리
+구글 번역기를 돌리더라도 영어 문서 (공식문서)를 읽고 이해하는 습관을 들여야 된다.
+습관이 들면 들수록 괜찮아 진다.
 
-## 코드리뷰 요청시
+일부러 영어라고 한글문서를 찾는 습관은 기르지 않는 것이 좋다.
 
-과제 하고 난 후에 꼭 merge request 해주세요. (매주 금 저녁 7시까지)
+레벨이 높아지면 한글문서는 거의 없다.
 
-prep가이드 > 과제제출방법 참조.
-
-> 금 저녁 7시이후에 merge request시에는 코드리뷰를 못 받을수도 있음.
-
-
-
-Merge request는 켄님이 알아서 닫음.
-
-닫힌 것도 볼 수 있다. Closed 탭.
+#### 영어공부 꾸준히 하자!
 
 
 
-## 코드리뷰 질문
+## 이번에는 let과 const에 대해 잘 써보자
 
-- merge request시에 질문 작성
-- 질문 부분에 주석으로 질문 작성
+이번주 학습내용 이므로 잘 배워서 이번과제에 잘 활용해보자.
+
+컨벤션은 이번주 금요일 오피스아워에!
 
 
 
-## 벡틱?
-
-` 기호를 가리키는 말.
-`` 으로 만든 문자열은 string template라고 안에 변수를 넣을 수 있다.
+## js로 직접적으로 style변환 비추
 
 ```js
-var a = `hellow ${something} world`
+element.style.backgroundColor = "white";
 ```
 
-
-
-## substr()
-
-String.substr()은 이제 지원 X. 사용하면 안된다.
-
-substring() 또는 slice()를 사용해야 한다.
-
-
-
-## 이번주 과제
-
-#### Tick Tack Toe 게임 구현하기
-
-Prep 가이드 > 과제 관련 안내 란에 오픈.
-
-Git lab으로 오픈 될 예정.
-
-
-
-README.md를 읽으면서 과제를 파악하자.
-
-앞으로 모든 과제는 README.md에 상세히 적혀있음.
-
-> npm install 등등의 과제 진행 순서도 포함.
-
-
-
-구현해야 될 기능은 README.md의 ToDo를 참조.
-
-
-
-<u>구글에서 [Tick Tack Toe(틱택토)]("[https://www.google.com/search?newwindow=1&hl=ko&source=hp&ei=TjGEX-jMJ56Fr7wPzfWX4AE&q=%ED%8B%B1%ED%83%9D%ED%86%A0&oq=%ED%8B%B1%ED%83%9D%ED%86%A0&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6CAgAELEDEIMBOgQIABADOgUIABCxA1DAh2BYq5RgYM2VYGgBcAB4AYAB0gGIAbUJkgEFMC44LjGYAQCgAQGqAQdnd3Mtd2l6sAEA&sclient=psy-ab&ved=0ahUKEwjoq_nK7a7sAhWewosBHc36BRwQ4dUDCAc&uact=5](https://www.google.com/search?newwindow=1&hl=ko&source=hp&ei=TjGEX-jMJ56Fr7wPzfWX4AE&q=틱택토&oq=틱택토&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6CAgAELEDEIMBOgQIABADOgUIABCxA1DAh2BYq5RgYM2VYGgBcAB4AYAB0gGIAbUJkgEFMC44LjGYAQCgAQGqAQdnd3Mtd2l6sAEA&sclient=psy-ab&ved=0ahUKEwjoq_nK7a7sAhWewosBHc36BRwQ4dUDCAc&uact=5)") 검색하시면 브라우저에서 간단히 해볼 수 있다.</u>
-
-
-
-1. git clone
-2. cd tick-tack-toe
-3. npm install
-4. code . 혹은 vscode로 오픈
-5. git checkout -b '이름'
-   - 모든 과제마다 브랜치를 따야된다.
-6. npm start
-7. http://localhost:port 로 확인 가능
-8. 개발...
-9. 종료시 ctrl + c 
-
-
-
-index.html, index.js를 이용해 작업해보자.
-
-
-
-**과제 할 때 기능 추가나 수정사항이 있을 때 바로바로 commit 하고 메세지를 잘 남기자.**  -> 작업 이력관리에 도움이 되고 리뷰받을 때 더 잘 받을 수 있다.
-
-
-
-## Q. MR 여는건 언제?
-
-과제 처음부터 MR(merge request)를 열기보다는, 나중에 열자. 하지만, **금요일 저녁 7시 전에 작업이 완료되지 않았더라도 금요일 저녁 7시 전에는 꼭 열어두자.**
-
-
-
-## Q. 브랜치 이름 중복?
-
-이전 과제와는 상관 없다.
-
-하지만, 다른사람들과 중복되지 않게 이름으로 하는 것이 좋다.
-
-
-
-## 이번주 과제 핵심 주제 (주의깊게 봐야 될)
-
-이번주 내용이 많을 수 있으므로 미리미리 강의 시청을 해두자.
-
-
-
-DOM 보다는 Scope & Hoisting이 더 우선순위!
-
-
-
-DOM에서는 요소 선택하는 방법들 이벤트들 슥 훑어보는 느낌으로.
-
-
-
-Scope & Hoisting은 꼼꼼히 보고 이해하자. 
-이해가 부족하면 인터넷 꼭 찾아보자.
-
-
-
-## Q. 0 == null, 0 == undefined 가 false?
+이렇게 js로 직접적으로 css의 style을 바꾸면 `inline css`로 적용이 된다.
 
 ```js
-true 1 == "1"; // 
-true 0 == false; // true 
-0 == null; // false 
-0 == undefined; // false 
-0 == !!null; // true, look at Logical NOT operator 
-0 == !!undefined; // true, look at Logical NOT operator 
-null == undefined; // true
+<h1 style="background-color: white">안녕하세요</h1>
 ```
 
-0 == false인데,
+이렇게 되면 **inline css의 우선순위가 가장 높아서** 우리가 작성한 css파일의 css의 우선순위가 뒤로 밀려서 제대로 안먹힐 수도 있고,
 
-0 == null,
-0 == undefined
-는 false이다. 왜 그런걸까?
+css의 파일로 스타일을 관리하는것이 훨씬 유지보수성이 좋다.
 
-
-
-저 상황에서는 == 연산자로 **type coercion**이 발생했기 때문인데,
-왜 type coercion이 발생하는지에 대해서는 알 필요가 없다.
-
-그리고 **== 비교는 쓰지 않는것이 좋다.** - 일반적인 js convention이 아니다.
-
-**javascript에서 비교는 무조건 === 3개로!**
+그래서 css파일에 적용시킬 css class를 미리 만들어놓고 add, remove 시켜서 관리하는 것이 훨씬 좋다.
 
 
 
-## Q. !!의 의미?
+## 파일의 끝에는 항상 한 줄의 공백?
 
-!는 not 연산자. not은 반대 Boolean으로 바꾼다.
+저번시간에도 살펴봤던 내용인데,
+Git 때문.
 
-그리고 모든 값에 대하여 Boolean 형으로 바꾸는데,
+Git에 올라가는 파일은 무조건  빈 줄 하나를 넣어줘야 되는데,
+Git이 빈 줄을 통해서 파일을 구분 하는 로직이 있다고 함.
 
-```js
-var value1 = "hello world";
-var bolVal = !value // false
-var bolVal2 = !!value // true
+없으면 git에서 No newline at end of file이라는 경고를 보여준다.
+
+
+
+## CSS 작성시의 컨벤션
+
+CSS파일 작성에도 유지보수성, 가독성, 일관성을 위해서 컨벤션을 따라야 한다.
+
+정답은 없지만, 순서나 규칙의 **일관성을 지켜서 가독성을 올리는것이 중요 포인트!**
+
+그리고 규칙이 있어도 빈 줄 없이 쭈욱 쓰는 것이 일반적.
+
+
+
+## html, css, javascript
+
+각각의 역활이 있다.
+모든 일을 javascript로 할 수는 있지만, 하지말자.
+
+역활과 용도를 정확하게 파악해서 개발 할 수 있도록 하자.
+
+html, css로 해결가능하다면 그렇게 하는 것이 좋음.
+
+
+
+## 변수 네이밍
+
+변수 네이밍을 할 때 최대한 자세하게!
+
+변수, 함수 네이밍을 할 때 이름이 긴 것에대해서 절대로 염두하지말자!
+
+**명확하게 나타내주는 것이 좋다.**
+**+ 상대방에 대한 배려!**
+
+근데, 너무 길어지면 40글자? 되면 조금씩 약어...
+
+근데 이런경우는 거의 없다. 
+
+가독성을 항상 염두하면서 개발하자!
+
+> 코드의 효율 VS 가독성 
+>
+> 가독성을 더 우선순위로.
+
+가독성을 위한 코드를 짜는 법은 계속해서 연마하자!
+
+
+## DOM에 새로운 커스텀 속성을 만들때?
+
+```html
+<div class="vanilla-coding" isgood="true">
+    Something
+</div>
 ```
 
-이러한 특성 때문에,
+다음과 같이 isGood 부분은 원래 html div 태그의 attribute가 아니라 새로 커스텀 해서 만든 속성!
 
-!!연산자로 해당 변수값을 boolean형으로 바꾸는데 쓰기도 한다.
--> 사실 이상황 아니면 잘 쓰지 않는다.
+이렇게 할 수 도 있다.
 
+```html
+<div class="vanilla-coding" data-isgood="true">
+    Something
+</div>
+```
 
+근데, 커스텀 속성을 부여하고 싶을때에는 위처럼 data- 를 붙인 data attribute를 사용해야 한다.
 
-현업에서는 Boolean(피연산자) 와 !! 비슷하게 쓰이는 것 같고, 회사 convention에 따르면 된다. 없으면 본인이 편한대로.
-
-
-
-## Q. currenttarget <-> target
-
-수요일 오피스아워에서 얘기 할 것.
-
-강의 들을 때, 공부할 때 자세히 살펴보자.
+data attribute에 대해서는 꼭 찾아보자.
 
 
 
-## Q. 파일 마지막에 \n 개행문자?
+## Q. if? switch?
 
-스스로 올린 과제가 잘 올라갔는지 확인하자.
+if 문에서 if else 문이 너무 많아져서 가독성이 좋지 않다면 switch문을 사용하는 것이 가독성을 향상시키는데 좋은 방법이 될 수 있다.
 
-깃 저장소(깃랩)에 보면 No newline at end of file이라는 메세지가 있을 수 있는데,
+> 가독성을 위해서 if문과 switch문을 함께 쓸 수 있다.
 
-이 부분은 Git에서 알려주는 메세지.
-
-**Git은 모든 파일에 마지막에 빈 줄이 필요**하다.
-Git이 파일 구분할 때 필요하다고 함.
-
-개행문자라기보다 그냥 enter로 빈 줄 하나 만들어주면 된다.
-
-더 자세한 내용은 구글링해보자.
-
-
-
-## Q. 객체 property? key?
-
-부르기에 차이. 부르는 사람 마음.
-
-property, 속성, key .. 상관없음.
+근데, switch문이 if문보다 복잡해진다면 if문을 쓰는 것이 더 좋지는 않을지 생각해보자.
 
 
 
 ## ETC
 
-> - 캔님 애플 16인치 쓰신다고하네요. (부럽...)
-> - 캔님 수염은 가끔씩 민다고하시네요.
-> - 블로그 리뷰는 Slack 9기방에 적어두면 한번 봐주신다고 합니다.
-> - 부트캠프 테스트는 12월 둘째주에 봐도 되지만,
->   신청은 그전에 미리미리 해둬야 된다고 하네요.
-
+- 과제 모두 열렸음.
+  - 부트캠프 어드미션 테스트를 빨리보고싶으면 먼저 얼른 완료하자.
+- 현재 9기 부트캠프 모집중이지만 남은 과제 급하게 하지말자. 
+  - 천천히 페이스 조절하면서 이해하면서 과제해도 충분하다고 하십니다!
+- 부트캠프 8기 최종 발표가 있다는데...?

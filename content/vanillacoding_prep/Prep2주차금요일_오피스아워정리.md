@@ -1,3 +1,11 @@
+---
+title: "Prep 2주차 금요일 오피스아워 정리"
+draft: false
+date: "2020-10-16 21:14:00"
+path: "/vanillacoding/prep/week2_op3"
+category: "vanilla coding"
+---
+
 # Prep 2주차 금요일 오피스아워 정리
 
 ## Q. DOM 실습 좀더 하고싶을땐?
@@ -200,4 +208,3 @@ createElement - appendChild는 각 요소를 프로그래밍적으로 만들어�
 상황에 맞게 쓰면 된다. 후자는 요소를 여러개 추가해야되는 상황이면 일일이 만들어서 넣어줘야 된다.
 
 둘 다 상황에 맞게 잘 쓰면 된다.
-
