@@ -1,5 +1,5 @@
 ---
-title: "Prep 3주차 수요일 오피스아워 정리"
+title: "Prep 3주차 금요일 오피스아워 정리"
 draft: false
 date: "2020-10-21 21:13"
 path: "/vanillacoding/prep/week3_op3"

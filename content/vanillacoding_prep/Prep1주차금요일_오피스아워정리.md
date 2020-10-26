@@ -6,10 +6,6 @@ path: "/vanillacoding/prep/week1_op3"
 category: "vanilla coding"
 ---
 
-
-
-# Prep 1주차 금요일 오피스아워 정리
-
 ## PrevQ. {} || something
 
 지난시간 {} || something, {} && something 이 안되었던 이유는 

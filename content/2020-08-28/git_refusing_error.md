@@ -7,7 +7,7 @@ category: 'git'
 
 ---
 
-# git pull refusing to merge unrelated
+## git pull refusing to merge unrelated
 
 윈도우에서 블로그작업을 하다가 오랜만에 맥북으로 작업을 하려고 꺼내서 동일한 git hub repo remote 저장소에서 git pull을 했다.
 

@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week3_op1"
 category: "vanilla coding"
 ---
 
-# Prep 3주차 월요일 오피스아워 정리
-
 ## 함수 Naming
 
 함수 이름은 동사로 시작하는 것이 일반적.

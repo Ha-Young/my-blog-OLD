@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week3_op2"
 category: "vanilla coding"
 ---
 
-# Prep 3주차 수요일 오피스아워 정리
-
 ## Primitive Vs Reference
 
 #### Primitive

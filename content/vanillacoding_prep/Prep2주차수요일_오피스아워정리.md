@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week2_op1"
 category: "vanilla coding"
 ---
 
-# Prep 2주차 월요일 오피스아워 정리
-
 ## 코드리뷰 요청시
 
 과제 하고 난 후에 꼭 merge request 해주세요. (매주 금 저녁 7시까지)
