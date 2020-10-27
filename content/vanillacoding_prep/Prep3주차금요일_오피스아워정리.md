@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week3_op3"
 category: "vanilla coding"
 ---
 
-# Prep 3주차 금요일 오피스아워 정리
-
 ## Q. 이번과제 수정사항 생기면 계속 재 풀이하는데?
 
 이럴때는 개발을 위해서 네비게이터를 따로 만들어 둔다던지 등의 조작을 한다.
