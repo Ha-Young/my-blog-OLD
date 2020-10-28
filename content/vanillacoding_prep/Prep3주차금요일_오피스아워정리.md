@@ -1,12 +1,10 @@
 ---
-title: "Prep 3주차 수요일 오피스아워 정리"
+title: "Prep 3주차 금요일 오피스아워 정리"
 draft: false
 date: "2020-10-21 21:13"
 path: "/vanillacoding/prep/week3_op3"
 category: "vanilla coding"
 ---
-
-# Prep 3주차 금요일 오피스아워 정리
 
 ## Q. 이번과제 수정사항 생기면 계속 재 풀이하는데?
 

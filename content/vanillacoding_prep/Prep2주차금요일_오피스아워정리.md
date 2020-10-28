@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week2_op3"
 category: "vanilla coding"
 ---
 
-# Prep 2주차 금요일 오피스아워 정리
-
 ## Q. DOM 실습 좀더 하고싶을땐?
 
 Prep 과제로 충분하지만 더 하고싶다면,

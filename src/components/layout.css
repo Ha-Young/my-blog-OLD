@@ -695,7 +695,11 @@ h5::selection,
 h6::selection,
 p::selection,
 a::selection {
-  background: #e5e2c5;
+  background: #d33933;
+}
+
+strong::selection {
+  background: black;
 }
 
 @media only screen and (max-width: 480px) {

@@ -7,8 +7,6 @@ category: 'graphQL'
 
 ---
 
-# GraphQL?
-
 ![graphql](https://graphql-kr.github.io/img/logo.svg)
 
 GraphQL은 웹 개발을 하는 사람이면 한번쯤 들어봤을 것 같다.

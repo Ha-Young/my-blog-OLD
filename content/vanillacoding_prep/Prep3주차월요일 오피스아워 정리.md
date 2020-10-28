@@ -6,8 +6,6 @@ path: "/vanillacoding/prep/week3_op1"
 category: "vanilla coding"
 ---
 
-# Prep 2주차 수요일 오피스아워 정리
-
 ## 과제
 
 먼저 살펴 볼 함수는
