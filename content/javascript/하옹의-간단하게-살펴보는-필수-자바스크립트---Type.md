@@ -149,8 +149,6 @@ var binary = 0b1010;
 console.log(hex === oct === binary); // true
 ```
 
-
-
 ### 무한대 표시 (Infinity, -Infinity)
 
 그 무엇보다 크고 작은 숫자인 무한대를 표기 할 수도 있다.
@@ -200,8 +198,6 @@ NaN을 체크하는 방법은 전역객체에 존재하는 isNaN() 메서드를 
 ```js
 console.log(isNaN(number)); // true
 ```
-
-
 
 
 
@@ -256,4 +252,61 @@ console.log(isNaN('NaN')); // true
 console.log(Number.isNaN('NaN')); // false
 console.log(Number.isNaN(NaN)); // true
 ```
+
+
+
+## 3. Boolean Type
+
+불리언 타입은 참, 거짓을 나타내는 `true`, `false` 로 나타낼 수 있다.
+
+```js
+var isSomeTrue = true;
+var isSomeTrue = false;
+```
+
+### Truthy VS Falsy
+
+Javascript에서는 Boolean 타입에 더나아간 개념으로 `Truthy`와 `Falsy`라는 개념이 있다.
+
+- Truthy  : true로 인식되는 값
+- Falsy : false로 인식되는 값
+
+
+
+`Falsy`에 속하는 값들만 알고있으면, 그 외의 나머지는 `Truthy`이다.
+
+#### Falsy 값
+
+- false
+- undefined
+- null
+- 0, -0
+- NaN
+- "" (빈 문자열)
+
+햇갈리기 쉬운 값으로는 `{}` `[]` 빈 객체, 배열이 있다. 이 값들은 Truthy.
+
+
+
+### Boolean 형변환 (! 연산자)
+
+Boolean은 앞서 봤던, `Truthy` `Falsy` 개념으로 형변환을 할 필요는 없지만,
+
+보다 명확하게 나타내기 위해 `!` 연산자를 두번 사용`!!`하기도 한다.
+
+```js
+var string = "";
+var num = 0;
+
+console.log(!!string); // false
+console.log(!!num); // false
+
+var string = "string";
+var num = 10;
+
+console.log(!!string); // true
+console.log(!!num); // true
+```
+
+
 
