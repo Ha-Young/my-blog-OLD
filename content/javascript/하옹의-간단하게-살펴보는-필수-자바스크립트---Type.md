@@ -13,7 +13,7 @@ category: "javascript"
 
 자료형은 위키 백과에서는 다음과 같이 표현하고 있다.
 
-> **자료형**(資料形) 또는 **데이터 타입**([영어](https://ko.wikipedia.org/wiki/영어): data type)은 [컴퓨터 과학](https://ko.wikipedia.org/wiki/컴퓨터_과학)과 [프로그래밍 언어](https://ko.wikipedia.org/wiki/프로그래밍_언어)에서 실수치, 정수, 불린 자료형 따위의 여러 종류의 데이터를 식별하는 분류로서, 더 나아가 해당 자료형에 대한 가능한 값, 해당 자료형에서 수행을 마칠 수 있는 명령들, 데이터의 의미, 해당 자료형의 값을 저장하는 방식을 결정한다.
+> **자료형**(資料形) 또는 **데이터 타입**(data type)은 [컴퓨터 과학](https://ko.wikipedia.org/wiki/컴퓨터_과학)과 [프로그래밍 언어](https://ko.wikipedia.org/wiki/프로그래밍_언어)에서 실수치, 정수, 불린 자료형 따위의 여러 종류의 데이터를 식별하는 분류로서, 더 나아가 해당 자료형에 대한 가능한 값, 해당 자료형에서 수행을 마칠 수 있는 명령들, 데이터의 의미, 해당 자료형의 값을 저장하는 방식을 결정한다.
 
 
 
@@ -103,7 +103,7 @@ String Object를 이용해서 만든 변수의 `typeof` 결과는 `"object"`이�
 
 문자열 타입은 Javascript 타입 종류중 하나인 `원시 타입 (Primitive Type)`이다. 
 
-Privitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
+Primitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
 
 
 
@@ -116,6 +116,18 @@ Privitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/We
 속성은 대표적으로 **length**가 있으며,
 
 메서드는 거의 대다수가 중요하기 때문에, 디테일한 내용은 [공식문서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/prototype)를 참조하자.
+
+
+
+### typeof
+
+string 타입의 값을 typeof 연산자를 하면 `"string"` 값이 나온다.
+
+```js
+var stringValue = "hello";
+
+console.log(typeof stringValue); // "string"
+```
 
 
 
@@ -218,7 +230,7 @@ console.log(number === 10) // false
 
 숫자 타입은 Javascript 타입 종류중 하나인 `원시 타입 (Primitive Type)`이다. 
 
-Privitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
+Primitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
 
 
 
@@ -255,6 +267,21 @@ console.log(Number.isNaN(NaN)); // true
 
 
 
+### typeof
+
+number 타입의 값을 typeof 하면 `"number"` 값이 나온다.
+
+```js
+var numValue = 20;
+console.log(typeof 10); // "number"
+console.log(typeof numValue); // "number"
+console.log(typeof NaN); // "number"
+```
+
+
+
+
+
 ## 3. Boolean Type
 
 불리언 타입은 참, 거짓을 나타내는 `true`, `false` 로 나타낼 수 있다.
@@ -267,6 +294,8 @@ var isSomeTrue = false;
 ### Truthy VS Falsy
 
 Javascript에서는 Boolean 타입에 더나아간 개념으로 `Truthy`와 `Falsy`라는 개념이 있다.
+
+이 개념은 변수의 타입이 Boolean 타입이 아니더라도, Boolean 형태의 값처럼 인식하여 if문과 같은 흐름제어에 `true` `false` 와 같이 쓰이게 된다.
 
 - Truthy  : true로 인식되는 값
 - Falsy : false로 인식되는 값
@@ -288,7 +317,24 @@ Javascript에서는 Boolean 타입에 더나아간 개념으로 `Truthy`와 `Fal
 
 
 
-### Boolean 형변환 (! 연산자)
+```js
+var someValue = "하하하";
+var nothing = "";
+
+if (someValue) {
+    console.log(someValue); // 출력
+}
+
+if (nothing) {
+    console.log("값 없음"); // 출력 X
+}
+```
+
+
+
+
+
+### Boolean 형변환 (!! 연산자)
 
 Boolean은 앞서 봤던, `Truthy` `Falsy` 개념으로 형변환을 할 필요는 없지만,
 
@@ -307,6 +353,265 @@ var num = 10;
 console.log(!!string); // true
 console.log(!!num); // true
 ```
+
+
+
+### Primitive Type
+
+불린 타입은 Javascript 타입 종류중 하나인 `원시 타입 (Primitive Type)`이다. 
+
+Primitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
+
+
+
+### typeof
+
+Boolean 타입의 값을 typeof 하면 "boolean" 값이 나온다.
+
+```js
+console.log(typeof true); // "boolean"
+console.log(typeof false); // "boolean"
+```
+
+
+
+## 4. Undefined (정의되지않음)
+
+`undefined` 값은 **변수 선언시 자동으로 할당되는 값**으로, Undefined 타입이다.
+Undefined 타입의 값은 `undefined` 하나밖에 존재하지 않는다.
+
+```js
+var undefinedVar; // undefined 자동할당
+let undefinedVar; // undefined 자동할당
+console.log(undefinedVar); // undefined
+```
+
+
+
+### Undefined값은 어떻게?
+
+`undefined`는 개발자가 스스로 변수에 할당하는 값이 아니고, 주로 <u>선언은 되었지만 값을 할당하지않은 변수</u>에 접근하거나 <u>객체에 존재하지않는 속성값을 가져오려고 할 때</u> `undefined`가 반환된다.
+
+1. **선언 되었으나 값이 할당되지 않은 변수**
+2. **존재하지않는 객체의 속성(Property)에 접근**
+
+
+
+개발자 스스로 값이 없음을 표시하고 싶을때 `undefined`를 할당하는것은 좋지못한 컨벤션. 일반적이지 않다.
+
+값이 없다는것을 표기하고 싶다면 null 타입을 이용하도록 한다. 
+
+```js
+var emptyValue = undefined; // Bad
+var emptyValue = null; // Good
+```
+
+
+
+### undefined 확인 (Falsy)
+
+`undefined` 값인 것을 확인하려면은 `undefined`값으로 명백하게 비교 할 수도 있지만, Falsy의 특성을 이용해도 좋다.
+
+```js
+var emptyValue;
+
+if (emptyValue === undefined) {
+    // ToDo
+}
+
+// Falsy
+if (emptyValue) { 
+    // ToDo
+}
+```
+
+아래의 Falsy 특성을 이용해서 변수에 값이 할당되어있는지, 객체에 해당 속성이 있는지 체크하는데 주로 쓰인다.
+
+```js
+var person = {
+    name: "hayoung";
+    age: 29
+}
+
+if (person.age) {
+    console.log(`${person.name}의 나이는 ${person.age} 입니다.`);
+}
+
+if (person.age && person.age > 30) {
+    console.log(`${person.name}은 아저씨입니다.`);
+}
+```
+
+
+
+### 호이스팅
+
+또한 undefined는 호이스팅과 연관이 있는데, 변수를 할당해도 호이스팅 된 변수가 값이 할당되기 전까지는 `undefined`값으로 초기화 되어 있다.
+
+하지만 let과 const로 선언하는 변수형은 자체적으로 [TDZ]()로 보호가 되기 때문에 `ReferenceError`가 발생한다.
+
+```js
+function func() {
+    console.log(someValue); // 호이스팅으로 undefined 출력
+    
+    var someValue = "Hello World";
+}
+```
+
+호이스팅에 대한 자세한 내용은 이후 포스팅 할 호이스팅 포스트에서 알아보자.
+
+
+
+### Primitive Type
+
+undefined 타입은 Javascript 타입 종류중 하나인 `원시 타입 (Primitive Type)`이다. 
+
+Primitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
+
+
+
+### typeof
+
+`undefined` 값을 typeof 하면 `"undefined"` 값이 나온다.
+
+```js
+let undefinedValue;
+console.log(typeof undefined); // "undefined"
+console.log(typeof undefinedValue); // "undefined"
+```
+
+
+
+
+
+## 5. null (값이 없음)
+
+null 타입은 Undefined 타입과 유사하게 `null` 값 하나밖에 가지고 있지 않다.
+
+`null`값은 일반적으로 **개발자 스스로가 변수에 값이 없음을 명시할 때** 사용한다.
+
+```js
+var someValue = null; // 나중에 처리하기 위해 선언만
+```
+
+```js
+var person = {
+    name: "hayoung",
+    age: 29
+};
+
+// ToDo
+
+someValue = null; // 객체 사용 후 더이상 하용하지 않아 null 처리
+```
+
+
+
+### 가비지 콜렉션
+
+Javascript에서는 객체에 자동으로 메모리가 할당되고, [가비지 컬렉션](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science))을 이용해 **자동으로 메모리 해제**를 한다.
+
+가비지 컬렉션 중에서도 [Mark-and-sweep](https://en.wikipedia.org/wiki/Tracing_garbage_collection) 라는 방식을 사용하는데, 이는 일정 주기로 사용하지 않는 메모리들을 한꺼번에 해제하는 방식이다.
+
+문제는 우리가 사용하지 않는 객체를 수동으로 해제할 수 없다는 점과 사용하지 않는 메모리를 파악하는데 있다.
+
+이를 우리가 **사용하지 않는 변수에 null값을 직접 할당**해서 가비지 컬렉션이 되도록 유도하여 Javascript의 **메모리 관리에 도움**을 줄 수 있다.
+
+참조값을 가지고 있는 변수에 null값을 직접 할당함으로써 해당 메모리를 가리키는 참조 정보를 제거하여 누구도 참조하지 않는 메모리 영역으로 만드는 것.
+
+
+
+### null값 판별
+
+`null` 값 또한 `undefined`와 마찬가지로 Falsy값에 속하기 때문에 `undefined` 와 같이 Falsy 값으로 사용 할 수 있지만, 객체 참조값 변수로의 null을 명확하게 비교하려면 아래와 같이 해도 상관없다.
+
+```js
+var someObj = {
+    author: "hayoung"
+}
+someObj = null;
+
+if (someObj === null) {
+    // ToDo
+}
+```
+
+
+
+### Primitive Type
+
+null 타입은 Javascript 타입 종류중 하나인 `원시 타입 (Primitive Type)`이다. 
+
+Primitive Type의 내용은 [여기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)를 참조하자.
+
+
+
+### undefined VS null
+
+앞서 설명했듯이, undefined는 일부러 할당하지 않았는데 정의되지 않은 값을 나타내는 것이고,
+
+null 값은 프로그래밍 중에 의도적으로 빈 값을 나타내기 위한 값이다.
+
+
+
+####  == 연산자 [주의!]
+
+undefined와 null에 대해 [== 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)의 사용에 주의를 가져야 한다.
+
+`==` 연산자는 `===`연산자와 다르게 형변환을 시켜준다는 특성이 있다.
+
+따라서 `null`과 `undefined`의 값을 비교할 때 형변환이 일어나서 둘 다 Falsy값이기 때문에 참이된다.
+
+```js
+console.log(null == undefined); // true
+console.log(null === undefined); // false
+```
+
+ 
+
+#### typeof
+
+undefined 타입인 `undefined`를 typeof 하면 undefined 타입으로 나온다.
+
+하지만, null 타입인 `null`을 typeof 하면 **null로 나오지 않고 `object`로 나온다.**
+
+```js
+console.log(typeof undefined); // "undefined"
+console.log(typeof null); // "object"
+```
+
+
+
+#### 숫자값 덧셈
+
+`null`에 숫자값을 더하면 그 숫자 그대로의 값이 되지만,
+
+`undefined`에 숫자값이 더해지면 NaN이 된다.
+
+```js
+console.log(10 + null); // 10
+console.log(10 + undefined); // NaN
+```
+
+
+
+### typeof 연산자
+
+`null` 값을 typeof 하면 **`"object"` 값이 나온다.**
+
+`"null"` 값이 나오는 것이 아닌 `"object"` 임을 유의! 
+
+`"object"` 값인 이유는 자바스크립트 설계상의 오류라고 한다.
+
+
+
+## 6. Symbol
+
+
+
+
+
+## 7. Object
 
 
 
