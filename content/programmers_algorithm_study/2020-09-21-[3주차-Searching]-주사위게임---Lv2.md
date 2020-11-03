@@ -3,7 +3,7 @@ title: "[3주차 Searching] 주사위게임 - Lv2"
 draft: false
 date: "2020-09-21 20:11"
 path: "/algorithm/programmers/study_week3_3"
-category: 'code test'
+category: 'algorithm'
 
 ---
 

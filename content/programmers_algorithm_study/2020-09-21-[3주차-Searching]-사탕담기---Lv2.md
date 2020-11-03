@@ -3,7 +3,7 @@ title: "[3주차 Searching] 사탕담기 - Lv2"
 draft: false
 date: "2020-09-21 20:11"
 path: "/algorithm/programmers/study_week3_6"
-category: 'code test'
+category: 'algorithm'
 
 ---
 

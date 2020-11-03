@@ -2,7 +2,7 @@
 title: "resume"
 date: "2020-08-29 21:00"
 path: "/resume"
-draft: true
+draft: false
 ---
 
 <div style="position: relative; width: 100%; height: 400px; display: flex; flex-direction: column; justify-content:center; allign-items:center;">
