@@ -607,7 +607,160 @@ console.log(10 + undefined); // NaN
 
 ## 6. Symbol
 
+ES2015를 통해 새롭게 추가된 타입.
 
+**충돌 위험이 없는 객체의 키 값을 만들기위해** 도입되었으며
+
+Symbol 타입을 생성하면 변경 불가능하고 고유한 Primitive한 값이 생성된다.
+
+식별자로의 충돌이 없는 유일하고 고유한 객체의 키값을 생성할 때 사용한다.
+
+### Symbol의 생성
+
+Symbol타입의 값 생성은 `Symbol()` 함수를 통해서 생성한다.
+
+다른 Primitive Type의 값들과 다르게 `new (String, Number, Boolean)`과 같이 객체 생성이 불가능하다.
+
+```js
+let symbolValue = Symbol();
+symbolValue = new Symbol(); // TypeError: Symbol is not a constructor
+```
+
+
+
+`Symbol()` 함수의 인자로 문자열 값을 전달할 수 있는데, 이는 Symbol에 대한 Description으로 사용할 수 있다.
+
+```js
+const symbolValue = Symbol("testIdentifier");
+
+console.log(symbolValue); // Symbol(testIdentifier);
+```
+
+
+
+`Symbol()` 함수의 문자열 인자를 통해 생성 후 똑같은 문자열 인자로 Symbol 생성을 해도 똑같지 않다.
+
+`Symbol() ` 함수는 무조건 새로운 Symbol 값을 반환하기 때문.
+
+```js
+const symbolValue = Symbol("testIdentifier");
+const symbolValue2 = Symbol("testIdentifier");
+
+console.log(symbolValue === symbolValue2); // false
+console.log(symbolValue === Symbol("testIdentifier")); // false
+
+console.log(Symbol("test") === Symbol("test")); // flase
+```
+
+
+
+### Symbol의 사용
+
+Symbol값은 객체의 프로퍼티로 사용한다.
+
+이 Symbol 값의 프로퍼티는 어떠한 프로퍼티와도 충돌되지 않고 오직 해당 Symbol 값으로만 접근가능하다.
+
+주로 [] 연산자를 통해 객체 프로퍼티로 등록 및 가져온다.
+
+```js
+let authorSymbol = Symbol("author");
+const obj = {};
+
+obj[authorSymbol] = "hayoung";
+
+console.log(obj[authorSymbol]); // hayoung
+```
+
+
+
+```js
+let authorSymbol = Symbol("author");
+const obj = {};
+
+obj[authorSymbol] = "hayoung";
+console.log(obj[authorSymbol]); // hayoung
+
+authorSymbol = Symbol("author");
+console.log(obj[authorSymbol]); // undefined
+```
+
+
+
+### Symbol.for
+
+전역 Symbol 레지스트리에 공유 Symbol 값으로 생성하고 가져올 수 있다.
+
+우리가 `Symbol.for(KEY)` 와 같이 `Symbol.for()` 메서드와 문자열 인자값으로 새로운 Symbol 값을 생성하면 전역 Symbol 레지스트리에 해당 문자열의 키로 Symbol 값이 등록이 됨과 동시에 Symbol 값을 반환한다.
+
+추후 **다시 Symbol.for메서드에 해당 문자열 키로 해당 Symbol값을 찾을 수 있다.**
+
+해당 문자열키에 해당하는 Symbol값이 없다면 해당 문자열 키로 하는 Symbol값을 새로 전역 Symbol 레지스트리에 등록하고 Symbol값을 반환한다.
+
+
+
+**Module A**
+
+```js
+const authorSymbol = Symbol.for("author"); // Symbol 값 새로 생성
+
+const ModuleA = {};
+
+ModuleA[authorSymbol] = "hayoung";
+
+export default ModuleA;
+```
+
+**Module B**
+
+```js
+import ModuleA from './ModuleA';
+
+const anotherAuthorSymbol = Symbol.for("author"); // 이전에 전역 Symbol 레지스트리에 저장되어있던 Symbol값 반환.
+
+console.log(ModuleA.anotherAuthorSymbol); // hayoung
+```
+
+
+
+### Symbol for .. in
+
+Symbol 키 값은 for...in 반복문으로 가져올 수 없다.
+
+```js
+var obj = {};
+
+obj[Symbol("one")] = 1;
+obj["two"] = 2;
+obj[Symbol("three")] = 3;
+obj.four = 4;
+
+for (let key in obj) {
+    console.log(key); // "two" / "four" 출력
+}
+```
+
+만약 객체에서 Symbol값을 가져오려면 `Object.getOwnPropertySymbols()`를 통해 가져올 수 있다.
+
+```js
+const symbols = Object.getOwnPropertySymbols(obj);
+
+console.log(symbols); // [Symbol(one), Symbol(three)]
+
+for (let i = 0; i < symbols.length ; i++) {
+    console.log(symbs[i]); // Symbol(one) / Symbol(three)
+}
+```
+
+
+
+### typeof
+
+Symbol 값을 typeof 하면 `"symbol"` 값으로 나온다.
+
+```js
+console.log(typeof Symbol()); // "symbol"
+console.log(typeof Symbol("author")); // "symbol"
+```
 
 
 
