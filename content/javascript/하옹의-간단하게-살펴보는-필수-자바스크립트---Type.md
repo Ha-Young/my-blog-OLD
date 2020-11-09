@@ -521,7 +521,7 @@ Javascript에서는 객체에 자동으로 메모리가 할당되고, [가비지
 
 
 
-### null값 판별
+### null값 확인 (Falsy)
 
 `null` 값 또한 `undefined`와 마찬가지로 Falsy값에 속하기 때문에 `undefined` 와 같이 Falsy 값으로 사용 할 수 있지만, 객체 참조값 변수로의 null을 명확하게 비교하려면 아래와 같이 해도 상관없다.
 
@@ -558,7 +558,7 @@ null 값은 프로그래밍 중에 의도적으로 빈 값을 나타내기 위�
 
 undefined와 null에 대해 [== 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)의 사용에 주의를 가져야 한다.
 
-`==` 연산자는 `===`연산자와 다르게 형변환을 시켜준다는 특성이 있다.
+`==` 연산자는 `===`연산자와 다르게 형변환이 적용된다는 특성이 있다.
 
 따라서 `null`과 `undefined`의 값을 비교할 때 형변환이 일어나서 둘 다 Falsy값이기 때문에 참이된다.
 
@@ -579,6 +579,8 @@ undefined 타입인 `undefined`를 typeof 하면 undefined 타입으로 나온�
 console.log(typeof undefined); // "undefined"
 console.log(typeof null); // "object"
 ```
+
+이는 자바스크립트 초기 설계상의 오류라고 볼 수 있다.
 
 
 
