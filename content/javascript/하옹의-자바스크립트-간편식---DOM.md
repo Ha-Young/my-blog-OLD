@@ -19,7 +19,195 @@ MDN에서는 DOM을 이렇게 정의하고 있다.
 프로그래밍 인터페이스는 우리가 흔히 말하는 API와 같다고 보면 된다.
 API는 (Application programming interface)로 소프트웨어 간의 교류를 가능하게 해주는 표면같은 것 이라고 생각하면 되는데, 프로그램에서 어떤 다른 프로그램을 사용하고 싶을 때 이 API를 사용하는 것이라고 보면 된다.
 
-따라서 이 **DOM이라는 인터페이스(API)를 사용하면 HTML, XML 문서를 우리가 사용 및 조종할 수 있다.**
+따라서 이 **DOM이라는 인터페이스(API)를 사용하면 HTML 문서를 우리가 조작할 수 있다.**
+
+
+
+**아래와 같이 만들어진 html 문서를 DOM을 이용해 조작할 수 있다.**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>제목</h1>
+    <h2>소제목</h2>
+    <p>내용</p>
+    <ul>
+      <li>리스트1</li>
+      <li>리스트2</li>
+      <li>리스트3</li>
+      <li>리스트4</li>
+      <li>리스트5</li>
+    </ul>
+  </body>
+</html>
+```
+
+
+
+**이러한 DOM은 JavaScript 언어의 일부는 아니다.**
+
+우리가 주로 웹 페이지를 다루는데 **JavaScript 프로그래밍 언어를 통해 DOM이라는(HTML 페이지를 조작하는 )API를 사용할 뿐**이지, 파이썬과 같은 다른 프로그래밍 언어로도 DOM을 충분히 사용할 수 있다.
+
+브라우저 자체에 WEB API가 내장되어 있고, 이 WEB API내부에 DOM이 내장되어있다고 보면 된다.
+
+
+
+## DOM Node Tree
+
+DOM은 Tree구조로 이루어져있다. 이 Tree 구조를 
+
+> Tree구조는 Node들로 구성된다.
+
+DOM Tree를 구성하는 Node들은 다음과 같다.
+
+1. Document Node
+2. Element Node
+3. Attribute Node
+4. Text Node
+
+
+
+### 1. Document Node
+
+Document Node는 DOM의 가장 최상위 Node로 모든 Node들의 부모를 쭉 따라 올라가면 이 Document Node가 종착지일 것이다.
+
+반대로 모든 Node들은 이 Document Node의 자식.
+
+DOM에 접근하기위해서는 무조건 최상위 Node인 이 Document Node를 통할수 밖에 없다.
+
+HTML 문서 그 자체를 가리킨다고 보면 된다.
+
+
+
+브라우저 개발자툴 콘솔에 다음과 같이 입력해보자.
+
+```js
+dir(document);
+```
+
+<img src=".\하옹의-자바스크립트-간편식---DOM_img1.md" alt="image-20201115233754845" style="zoom:67%;" />
+
+
+
+### 2. Element Node
+
+Element Node는 HTML의 요소. 즉, HTML의 각 Tag들을 가리킨다고 보면 된다.
+
+HTML 태그들의 구조화된 부모 자식 관계를 그대로 따라간다.
+
+그리고 모든 요소는 **HTMLElement** 객체가 상속되어 있어 **HTMLElement의 특성을 모두 포함**하고 있다.
+
+```js
+const bodyElement = document.body; // body 태그 선택
+const someElement = document.getElementById('js-id'); // js-id의 id값을 같는 요소 선택
+const divElements = bodyElement.querySelector('div'); // css 선택자로 div태그 요소 선택
+```
+
+우리는 이 Element Node를 통해 HTML Tag정보를 참조, 수정할 수 있다.
+
+```js
+const createdDivElement = document.createNode('div'); // div 태그요소 생성
+createdDivElement.innerHTML = '<h1>this is title</h1>'; // div 태그요소의 html내용 변경
+```
+
+
+
+### 3. Attribute Node
+
+Attribute Node는 HTML의 Tag가 가지고있는 Attribute와 같다고 보면 된다.
+
+당연히 Attribute Node는 Element Node를 통해 접근가능하며,
+우리는 이 Attribute Node를 통해 HTML Tag의 Attribute를 수정할 수 있다.
+
+```js
+const createdDivElement = document.createNode('div'); // div 태그요소 생성
+
+createdDivElement.className = 'title-area'; // class attribute 수정
+createdDivElement.style.backgroundColor = 'red'; // style attribute 수정
+```
+
+
+
+### 4. Text Node
+
+Text Node는 HTML의 텍스트를 가리킨다. 텍스트는 HTML내에서도 가장 최하위 요소이고, DOM에서도 마찬가지이다.
+
+```js
+const createdDivElement = document.createNode('div');
+
+createdDivElement.textContext = 'Create Div Tag using by DOM';
+
+document.body.appendChild(createdDivElement); // body요소에 생성한 div태그 추가.
+```
+
+
+
+## DOM Element 선택
+
+DOM Element Node선택은 최상위 Tree Node인 Document Node를 통해 할수도,
+같은 DOM Element Node를 통해 할 수도 있다.
+
+물론 자식 Node들에대해서만 선택이 가능하다. 때문에 첫 시작은 document Node가 될 수 밖에 없다.
+
+
+
+DOM Element를 선택하는 방법은 다음과 같다.
+
+1. document.getElementById('id')
+2. document.getElementsByClassName('className')
+3. document.getElementsByTagName('tagName')
+4. document.querySelector('cssSelector')
+5. document.querySelectorAll('cssSelector')
+
+
+
+네이밍에서 알 수 있듯이, 1,2,3번은 <u>get element</u>가 들어가있기 때문에 `Element Node`를 가져온다는 명확한 뜻에 더해서 `id`, `class name`, `tag name`으로 가져오냐 마냐의 차이가 있다.
+
+여기서 Elements 와 같이 복수형으로 되어있다면 이건 `Element Node`를 복수 선택 할 수 있다는 것.
+
+4, 5번은 css 선택자를 통해 가져올 수 있는 방법으로, 4번은 하나 5번은 여러개의 `Element Node`를 가져올 수 있다.
+
+참고로 1번을 제외하고 모두 document가 아닌 `Element Node(HTMLElement)`에서도 사용가능하다.
+(1번은 id가 페이지내에 단 하나밖에 없기 때문)
+
+```js
+// 1개만 가져오는 방법
+const elementGottenById = document.getElementById('id name');
+const elementQuerySelector = document.querySelector('div.title-area');
+const childElementQuerySelector = elementQuerySelector.querySelector('h1.title');
+
+// 1개 이상의 유사배열형태로 가져오는 방법
+const elementsGottenByClassName = document.getElementsByClassName('class name');
+const childElementsGottenByClassName = elementsGottenByClassName.getElementsByClassName('child class');
+
+const elementsGottenByTagName = document.getElementsByTagName('tag name');
+const childElementsGottenByTagName = elementsGottenByTagName.getElementsByClassName('child tag');
+
+const elementsQuerySelectorAll = document.querySelectorAll('.button');
+const childElementsQuerySelectorAll = elementsQuerySelectorAll.querySelectorAll('.name');
+```
+
+
+
+정답은 없으나 **주로 querySelector()와 querySelectorAll()이 쓰인다.**
+
+
+
+## Element 요소 조작
+
+
+
+## Element 요소 생성
+
+
+
+## Element Event 추가
 
 
 
