@@ -768,5 +768,228 @@ console.log(typeof Symbol("author")); // "symbol"
 
 ## 7. Object
 
+### 참조값(Reference)
 
+프로그래밍에서는 **참조**라는 개념이 빠지지않고 나온다.
+
+참조라는 개념은 실제 값이 아닌, 그 값이 저장되어있는 주소값(참조값)을 식별자(변수)에 할당하는 것.
+이 식별자(변수)는 실제 값이 아닌 해당 값이 저장되어있는 주소값(참조값)을 가지고있다.
+
+이 참조라는 개념에 빠질수 없는 단어가
+passed(call)-by-value / passed(call)-by-reference 와 같은 단어들인데,
+
+#### passed-by-value VS passed-by-reference
+
+**값에 의한 전달(passed-by-value)**은 변수(식별자)에 할당될 때, 값 그 자체로의 복사가 일어나서 할당이되는것이고,
+
+**참조에 의한 전달(passed-by-reference)**은 메모리상에 값이 저장되어있는 **주소** 즉 **참조 값**이 변수(식별자)에 복사, 할당이 되는것이다. 이 때 같은 참조값을 가진 변수들중에서 하나의 변수만 값을 변경할 경우에는 레퍼런스를 통해서 메모리상의 실제 값을 수정하기 때문에 같은 메모리 주소의 참조값을 가진 변수들에 모두 적용이 된다.
+
+
+
+자바스크립트도 이런 **참조**라는 개념이 당연히 있고, 지금 설명하는 `Object` 타입의 값들이 모두 **참조**값이다.
+
+자바스크립트의 `Object` 타입의 값들은 참조의 특성에 의거해 아래와 같은 특성을 지닌다.
+
+```js
+var obj1 = {
+    prop1: 1,
+    prop2: "2"
+}
+
+var obj2 = obj1; // 같은 값을 가지는 것이 아닌, 같은 참조값을 가진다.
+
+obj2.prop2 = 3;
+
+console.log(obj1); // {prop1: 1, prop2: 3}
+// obj2를 수정했지만 obj1에도 수정내용이 적용
+```
+
+```js
+var arr1 = [1, 2, 3];
+var arr2 = [1, 2, 3];
+
+console.log(arr1 === arr2); // false
+// 값은 같지만 참조값이 같이 않음
+```
+
+```js
+function changeObj(obj, key, value) {
+    obj[key] = value;
+}
+
+var obj1 = {
+    prop1: 1,
+    prop2: "2"
+}
+
+changeObj(obj1, "prop1", "1");
+
+console.log(obj1); // {prop1: "1", prop2: "2"}
+// 스코프가 다르고 리턴을 하지않더라도 참조 특성으로 Primitive 값과 달리 값이 바뀐다.
+```
+
+
+
+### 객체 생성 방법
+
+객체를 생성하는 방법은 다양한 방법이 있지만, 크게 3가지로 나뉜다.
+
+1. 객체 리터럴 이용
+2. 생성자 함수
+3. new Object();
+
+#### 1. 객체 리터럴 이용
+
+리터럴(Literal)은 코드상에서 값을 그대로 표기해서 값을 생성하는 방법이다.
+
+객체를 객체 리터럴로 생성하는 방법이 가장 일반적으로 객체를 생성하는 방법이다.
+
+```js
+var hayoung = {
+    name: "hayoung",
+    gender: "male",
+    age: 29,
+    job: "developer",
+    isMarriage: false
+}
+
+var emptyObj = {}
+```
+
+위와 같이 `{}` 중괄호를 이용하면 객체를 쉽게 생성할 수 있고 이처럼 값을 코드상에서 바로 만드는 방법을 `리터럴`이라고 한다.
+
+내부적으로는, 3번방법인 `new Object()`가 작동한다.
+
+#### 2. 생성자 함수
+
+추후 살펴볼 내용이지만, 자바스크립트의 함수는 생성자 함수로도 정의할 수 있다. 생성자 함수라는 것은 일정의 형식이 정해진 것이 아니라, 정의한 함수에 new 키워드를 붙여 호출하면 생성자 함수로 사용할 수 있다.
+
+이러한 생성자 함수를 이용하면 생성자 함수에서 설정해놓은대로 객체가 생성이 되는데,
+이는 동일한 형태의 객체를 쉽고 빠르게 재생산 할 수 있다는 장점이 있다.
+
+> this와 Prototype 개념을 익히면 더 디테일하게 알 수 있다.
+
+```js
+function Human (name, gender, age) {
+    this.name = name;
+    this.gender = gender;
+    this.age = age;
+}
+
+var hayoung = new Human("hayoung", "male", 29);
+var faker = new Human("sanghyuk", "male", 24);
+```
+
+위와 같이 생성자 함수와 new, this 키워드를 이용해서 새로운 객체를 생성할 수 있다.
+
+> 생성자 함수는 new 키워드를 만나 빈 객체(인스턴스)를 생성하고 이를 생성자 함수 내부에서 this를 통해 생성된 인스턴스에 property, method 할당 등의 작업을 할 수 있다.
+>
+> 그리고 특별한 return문(객체 return)이 없다면,  이 인스턴스(this)를 자동으로 반환한다.
+
+#### 3. new Object()
+
+이 방법은 거의 쓸 일이 없지만, 생성자 함수를 통해 생성되는 방법을 제외하고는 거의 모든 방법이 내부적으로 
+`new Object()`와 동일하게 동작한다.
+
+```js
+var emptyObj = new Object(); // 객체 리터럴 {}로 생성하는것과 똑같다. (표현의 방식만 다름)
+emptyObj.prop1 = 1;
+emptyObj.prop2 = "2";
+
+console.log(emptyObj) // {prop1: 1, prop2: "2"}
+
+var numberObj = new Object(13); // primitive 값을 new Object로 생성하면 Object 타입으로 생성된다.
+
+console.log(numberObj); // Number {13}
+```
+
+
+
+### Property, Method 할당 하기
+
+객체는 일반적으로 `속성(property)`와 `메소드(method)` 값을 가질 수 있고, 이 속성값을 통해서 다양한 작업을 할 수 있다.
+
+>  `메소드(method)`는 객체의 `property`로 등록된 함수.
+
+```js
+var obj = {};
+obj.property1 = 1;
+obj["property2"] = "hello";
+obj.method1 = function() { console.log("hello, this is method")};
+
+console.log(obj); // {property1: 1, property2: "hello", method1: ƒ}
+```
+
+
+
+#### 점 표기법(Dot Notation)
+
+Dot Notation은 객체 식별자에 `.`을 찍어서 `property`, `method` 에 접근 할 수 있다.
+
+```js
+var obj = {};
+obj.property1 = 1;
+obj.method1 = function() {console.log("hello, this is method")};
+
+console.log(obj.property1); // 1
+obj.method1(); // "hello, this is method"
+```
+
+#### 대괄호 표기법(Bracket notation)
+
+Bracket Notation은 `[]` 로 `property`와 `method` Key값을 감싸서 접근 할 수 있다.
+
+Dot Notation과의 차이점은 Dot Notation과 다르게 Key값을 `string` 값으로 표기해야하고, 
+다른 변수(식별자)를 key값으로 이용하거나 다른 type의 값을 key값으로 이용할 수 있다.
+
+> 다른 type의 값을 key값으로 이용한다면, string 타입으로 형변환이 일어난다.
+
+```js
+var obj = {};
+var propKey = "propKey";
+
+obj["property1"] = 1;
+obj["method1"] = function() {console.log("hello, this is method")};
+obj[propKey] = propKey;
+
+console.log(obj["property1"]); // 1
+obj["method1"](); // "hello, this is method"
+
+obj[10] = "number type key";
+obj[[1,2]] = "array(object type) key";
+
+console.log(obj); // {10: "number type key", property1: 1, propKey: "propKey", 1,2: "array(object type) key", method1: ƒ}
+```
+
+
+
+### Array, Function
+
+우리가 javascript에서 사용하는 배열 `Array`와 함수 `Function` 는 사실 `Object` 타입이다.
+둘 다 식별자(변수)에 참조값이 할당, 복사되고 앞에서 봤던 참조 특성이 그대로 적용되고 일반 객체와 동일한 성질을 갖고있다.
+
+```js
+var arr = [1, 2, 3, 4]; // literal(객체리터럴)로 생성 후 할당
+
+console.log(arr[1]); // 2
+console.log(arr.length); // 4
+
+arr.prop1 = "property assignment";
+arr.method1 = function () { console.log("array is object")};
+
+console.log(arr.prop1); // property assignment
+arr.method1(); // array is object
+```
+
+```js
+function func (arg1, arg2, arg3) {
+    return (arg1 + arg2) * arg3;
+}
+
+console.log(func.length); // 3
+
+func.desc = "plus arg1, arg2 and multiply arg3";
+
+console.log(func.desc); // plus arg1, arg2 and multiply arg3
+```
 
