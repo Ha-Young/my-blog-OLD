@@ -65,6 +65,7 @@ DOM은 Tree구조로 이루어져있다. 이 Tree 구조를
 > Tree구조는 Node들로 구성된다.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <img src="https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/904/2234.png" alt="img" style="zoom:80%;" />
 
 Node 객체로부터 각 Node들에 대해 상속으로 이루어져있으며,
@@ -73,9 +74,6 @@ Node 객체로부터 각 Node들에 대해 상속으로 이루어져있으며,
 
 
 DOM Tree를 구성하는 대표적 Node들은 다음과 같다.
-=======
-DOM Tree를 구성하는 Node들은 다음과 같다.
->>>>>>> a45859b1cc9684b161fc7ea2953da4f5457fa0e0
 
 1. Document Node
 2. Element Node
@@ -102,13 +100,7 @@ HTML 문서 그 자체를 가리킨다고 보면 된다.
 dir(document);
 ```
 
-<<<<<<< HEAD
 <img src=".\하옹의-자바스크립트-간편식---DOM_img1.jpg" alt="image-20201115233754845" style="zoom:67%;" />
-=======
-<img src=".\하옹의-자바스크립트-간편식---DOM_img1.md" alt="image-20201115233754845" style="zoom:67%;" />
->>>>>>> a45859b1cc9684b161fc7ea2953da4f5457fa0e0
-
-
 
 ### 2. Element Node
 
@@ -172,11 +164,8 @@ DOM Element Node선택은 최상위 Tree Node인 Document Node를 통해 할수�
 
 
 
-<<<<<<< HEAD
 ### 선택 방법
 
-=======
->>>>>>> a45859b1cc9684b161fc7ea2953da4f5457fa0e0
 DOM Element를 선택하는 방법은 다음과 같다.
 
 1. document.getElementById('id')
@@ -202,11 +191,7 @@ const elementGottenById = document.getElementById('id name');
 const elementQuerySelector = document.querySelector('div.title-area');
 const childElementQuerySelector = elementQuerySelector.querySelector('h1.title');
 
-<<<<<<< HEAD
-// 1개 이상의 유사배열형태(HTMLCollection)로 가져오는 방법
-=======
 // 1개 이상의 유사배열형태로 가져오는 방법
->>>>>>> a45859b1cc9684b161fc7ea2953da4f5457fa0e0
 const elementsGottenByClassName = document.getElementsByClassName('class name');
 const childElementsGottenByClassName = elementsGottenByClassName.getElementsByClassName('child class');
 
@@ -223,7 +208,6 @@ const childElementsQuerySelectorAll = elementsQuerySelectorAll.querySelectorAll(
 
 
 
-<<<<<<< HEAD
 
 ### 선택 결과 (return value)
 
