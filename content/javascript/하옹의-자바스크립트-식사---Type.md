@@ -6,8 +6,7 @@ path: "/javascript/type"
 category: "javascript"
 ---
 
-
-\* 이 글은 Vanilla Coding Prep 코스 수강 후 정리하는 내용입니다.
+\* 이 글은 [MDN](https://developer.mozilla.org/es/), [Vanilla Coding Prep 강의자료](https://www.vanillacoding.co/), [PoiemaWeb](https://poiemaweb.com/)등 공신력있는 곳들을 참조한 글입니다.
 
 ## 자료형 (Type)이란?
 
